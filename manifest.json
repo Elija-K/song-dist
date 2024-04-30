@@ -18,13 +18,13 @@
   "orientation": "any",
   
   "icons": [{
-    "src": "/icon.png",
+    "src": "/tc-song-dist/icon.png",
     "sizes":"1024x1024",
     "type": "image/png",
     "purpose":"any"
   },
   {
-    "src": "/icon.png",
+    "src": "/tc-song-dist/icon.png",
     "sizes":"1024x1024",
     "type": "image/png",
     "purpose":"maskable"
