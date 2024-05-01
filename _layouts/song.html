@@ -76,13 +76,7 @@
   <iframe src="https://tc.soraxem.ch/viewer-js/#/songs/{{ page.akkorde }}" id="chords" style="display: none;height: 100vh;" class="mt-2 mt-md-4 ratio"></iframe>
   
   <script>
-// Test Start
 
-    function start_music() {
-      document.getElementById("startmusic2").src = music_src_iframe;
-    }
-
-// Test End
   if('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/tc-song-dist/sw.js')
