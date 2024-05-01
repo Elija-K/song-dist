@@ -14,7 +14,7 @@ title: Suchen
 </body>
 
 <script>
-  {% assign songs = site.html_pages | where: "dir", "/tc-song-dist/songs/" %}
+  {% assign songs = site.html_pages | where: "dir", "/songs/" %}
   var searchIndex = [
     {% for page in songs %}
       {
