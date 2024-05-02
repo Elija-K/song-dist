@@ -80,33 +80,32 @@
 // Test Start
 // Test Start
 
-var player;
 var temp;
+var temp2;
 
 
   // Nimmt den Link von Youtube
 var link = document.getElementById("YTLinkGrabber").innerHTML;
 
   // Erstellt einen URLSearchParams-Objekt
-var searchParams = new URLSearchParams(link.split('?')[1]);
+var temp = new URLSearchParams(link.split('?')[1]);
 
   // Ruft den Wert des 'v' Parameter ab
-var videoId = searchParams.get('v');
+var temp2 = searchParams.get('v');
 
-console.log(videoId); // Gibt den Parameter aus
-player = new YT.Player('youtube-player', {
-  height: '0',
-  width: '0',
-  videoId: videoId,
-  playerVars: {
-    autoplay: 0,
-    loop: 1,
-  },
-  events: {
-    'onReady': onPlayerReady,
-    'onStateChange': onPlayerStateChange 
-  } 
-});
+var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '0',
+          width: '0',
+          videoId: ,
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
  
 
 
