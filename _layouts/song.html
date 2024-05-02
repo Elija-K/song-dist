@@ -150,12 +150,12 @@ var videoplayer;
   }
   function showytvideo() {
     var videoplayerhidden;
-    videoplayerhidden = document.getElementById(videoplayer).style.display; 
-    if (videoplayerhidden === "block") {
-      videoplayerhidden = "hidden";
+    videoplayerhidden = document.getElementById(videoplayer); 
+    if (videoplayerhidden.style.display === "block") {
+      videoplayerhidden.style.display = "hidden";
     }
     else {
-      videoplayerhidden = "block";
+      videoplayerhidden.style.display = "block";
     }
   }
 
