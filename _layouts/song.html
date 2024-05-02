@@ -65,7 +65,7 @@
           <button class="btn btn-secondary" onclick="toggleAudio()" data-video="dQw4w9WgXcQ">Play/Pause Song now</button>
           <div id="musicplayer"></div> <!-- YT Music Player -->
         </div>
-        <div id="videoplayer" hidden></div> <!-- YT Video Player -->
+        <div id="videoplayer"></div> <!-- YT Video Player -->
         <div class="mt-2 mt-md-4" id="songtext">
           <h1>{{ page.title }}</h1>
           {{ content -}}
@@ -151,11 +151,11 @@ var videoplayer;
   function showytvideo() {
     var videoplayerhidden;
     videoplayerhidden = document.getElementById(videoplayer).style.display; 
-    if (videoplayerhidden === block) {
-      videoplayerhidden = hidden;
+    if (videoplayerhidden === "block") {
+      videoplayerhidden = "hidden";
     }
     else {
-      videoplayerhidden = block;
+      videoplayerhidden = "block";
     }
   }
 
