@@ -84,8 +84,7 @@ var temp;
 
 
   // Nimmt den Link von Youtube
-var ytgrabber = document.getElementById("YTLinkGrabber").innerHTML;
-var link = ytgrabber.replace(/"/g, "");
+var link = document.getElementById("YTLinkGrabber").innerHTML;
 
   // Erstellt einen URLSearchParams-Objekt
 var searchParams = new URLSearchParams(link.split('?')[1]);
