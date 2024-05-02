@@ -62,7 +62,7 @@
               Akkorde
             </button>
           </div>
-          <button class="btn btn-secondary" onclick="song_music">Play Song now</button>
+          <button class="btn btn-secondary" onclick="toggleAudio" data-video="dQw4w9WgXcQ">Play/Pause Song now</button>
         </div>
         
         <div class="mt-2 mt-md-4" id="songtext">
@@ -75,6 +75,69 @@
   <iframe src="https://tc.soraxem.ch/viewer-js/#/songs/{{ page.akkorde }}" id="chords" style="display: none;height: 100vh;" class="mt-2 mt-md-4 ratio"></iframe>
   
   <script>
+// Test Start
+// Test Start
+// Test Start
+
+var player;
+var temp;
+  function onYouTubeIframeAPIReady() {
+
+    ctrlq.innerHTML = '<img id="youtube-icon" src=""/><div id="youtube-player"></div>';
+    ctrlq.style.cssText = 'width:150px;margin:2em auto;cursor:pointer;cursor:hand;display:none';
+    ctrlq.onclick = toggleAudio;
+    // Nimmt den Link von Youtube
+    var link = {{ youtube }};
+
+    // Erstellt einen URLSearchParams-Objekt
+    var searchParams = new URLSearchParams(link.split('?')[1]);
+
+    // Ruft den Wert des 'v' Parameter ab
+    var videoId = searchParams.get('v');
+
+    console.log(videoId); // Gibt den Parameter aus
+
+
+
+    player = new YT.Player('youtube-player', {
+      height: '0',
+      width: '0',
+      videoId: videoId,
+      playerVars: {
+        autoplay: 0,
+        loop: 0,
+      },
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange 
+      } 
+    });
+  } 
+
+
+  function toggleAudio() {
+    if ( player.getPlayerState() == 1 || player.getPlayerState() == 3 ) {
+      player.pauseVideo(); 
+    } else {
+      player.playVideo(); 
+    } 
+  } 
+
+  function onPlayerReady(event) {
+    player.setPlaybackQuality("small");
+    document.getElementById("youtube-audio").style.display = "block";
+    togglePlayButton(player.getPlayerState() !== 5);
+  }
+
+  function onPlayerStateChange(event) {
+    if (event.data === 0) {
+      togglePlayButton(false); 
+    }
+  }
+
+// Test End
+// Test End
+// Test End
 
   if('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
