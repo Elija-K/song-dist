@@ -114,13 +114,13 @@ var player;
  
 
 
-  function toggleAudio() {
-    if ( player.getPlayerState() == 1 || player.getPlayerState() == 3 ) {
-      player.pauseVideo(); 
-    } else {
-      player.playVideo(); 
-    } 
-  } 
+      function toggleAudio() {
+        if ( player.getPlayerState() == 1 || player.getPlayerState() == 3 ) {
+          player.pauseVideo(); 
+        } else {
+          player.playVideo(); 
+        } 
+      } 
 
   function onPlayerReady(event) {
     player.setPlaybackQuality("small");
@@ -135,7 +135,7 @@ var player;
   }
 
   function show_yt_video() {
-    if (document.getElementById(player).style.display === "none" {
+    if (document.getElementById(player).style.display == "none") {
       document.getElementById(player).style.display = "block"
     }
     else {
