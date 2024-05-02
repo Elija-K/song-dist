@@ -73,7 +73,7 @@
     </div>
   </div>
   <iframe src="https://elija-k.github.io/tc-song-dist/viewer-js/#/songs/{{ page.akkorde }}" id="chords" style="display: none;height: 100vh;" class="mt-2 mt-md-4 ratio"></iframe>
-  <div id="Youtube-Link-Grabber">{{ youtube }}</div>
+  <div id="YTLinkGrabber">{{ youtube }}</div>
   <script>
 // Test Start
 // Test Start
@@ -82,7 +82,7 @@
 var player;
 var temp;
   // Nimmt den Link von Youtube
-  var link = document.getElementById(Youtube-Link-Grabber).innerHTML;
+  var link = document.getElementById(YTLinkGrabber).innerHTML;
 
   // Erstellt einen URLSearchParams-Objekt
   var searchParams = new URLSearchParams(link.split('?')[1]);
