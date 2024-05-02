@@ -63,9 +63,8 @@
             </button>
           </div>
           <button class="btn btn-secondary" onclick="toggleAudio()" data-video="dQw4w9WgXcQ">Play/Pause Song now</button>
-          <div id="musicplayer"></div> <!-- YT Music Player -->
         </div>
-        <div id="videoplayer" style="display: none;"></div> <!-- YT Video Player -->
+        <div id="player" style="display: none;"></div> <!-- YT Video/Music Player -->
         <div class="mt-2 mt-md-4" id="songtext">
           <h1>{{ page.title }}</h1>
           {{ content -}}
@@ -100,23 +99,9 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-
-
-var musicplayer;
+var player;
       function onYouTubeIframeAPIReady() {
-        musicplayer = new YT.Player('musicplayer', {
-          height: '0',
-          width: '0',
-          videoId: temp2,
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
-        });
-      }
-var videoplayer;
-      function onYouTubeIframeAPIReady() {
-        videoplayer = new YT.Player('videoplayer', {
+        videoplayer = new YT.Player('player', {
           height: '600',
           width: '800',
           videoId: temp2,
@@ -138,9 +123,9 @@ var videoplayer;
   } 
 
   function onPlayerReady(event) {
-    musicplayer.setPlaybackQuality("small");
+    player.setPlaybackQuality("small");
     document.getElementById("youtube-audio").style.display = "block";
-    togglePlayButton(musicplayer.getPlayerState() !== 5);
+    togglePlayButton(player.getPlayerState() !== 5);
   }
 
   function onPlayerStateChange(event) {
@@ -148,14 +133,13 @@ var videoplayer;
       togglePlayButton(false); 
     }
   }
+
   function showytvideo() {
-    var videoplayerhidden;
-    videoplayerhidden = document.getElementById(videoplayer); 
-    if (videoplayerhidden.style.display === "block") {
-      videoplayerhidden.style.display = "hidden";
+    if (document.getElementById(player).style.display === "none" {
+      document.getElementById(player).style.display = "block"
     }
     else {
-      videoplayerhidden.style.display = "block";
+      document.getElementById(player).style.display = "none"
     }
   }
 
