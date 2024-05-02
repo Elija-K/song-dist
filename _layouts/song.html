@@ -62,7 +62,7 @@
               Akkorde
             </button>
           </div>
-          <button class="btn btn-secondary" onclick="toggleAudio" data-video="dQw4w9WgXcQ">Play/Pause Song now</button>
+          <button class="btn btn-secondary" onclick="toggleAudio()" data-video="dQw4w9WgXcQ">Play/Pause Song now</button>
         </div>
         
         <div class="mt-2 mt-md-4" id="songtext">
@@ -73,7 +73,7 @@
     </div>
   </div>
   <iframe src="https://elija-k.github.io/tc-song-dist/viewer-js/#/songs/{{ page.akkorde }}" id="chords" style="display: none;height: 100vh;" class="mt-2 mt-md-4 ratio"></iframe>
-  <p class="YTLinkGrabber" hidden>Test</p>
+  <p id="YTLinkGrabber" hidden>Test</p>
   <script>
 // Test Start
 // Test Start
@@ -81,8 +81,10 @@
 
 var player;
 var temp;
+
+
   // Nimmt den Link von Youtube
-var ytgrabber = document.getElementsByClassName(YTLinkGrabber);
+var ytgrabber = document.getElementById(YTLinkGrabber);
 var link = ytgrabber.textContent;
 
   // Erstellt einen URLSearchParams-Objekt
