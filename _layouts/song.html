@@ -82,37 +82,37 @@
 var player;
 var temp;
   // Nimmt den Link von Youtube
-  var link = document.getElementById(YTLinkGrabber).textContent;
+var link = document.getElementById(YTLinkGrabber).textContent;
 
   // Erstellt einen URLSearchParams-Objekt
-  var searchParams = new URLSearchParams(link.split('?')[1]);
+var searchParams = new URLSearchParams(link.split('?')[1]);
 
   // Ruft den Wert des 'v' Parameter ab
-  var videoId = searchParams.get('v');
+var videoId = searchParams.get('v');
 
-  console.log(videoId); // Gibt den Parameter aus
-  function onYouTubeIframeAPIReady() {
+console.log(videoId); // Gibt den Parameter aus
+function onYouTubeIframeAPIReady() {
 
-    ctrlq.innerHTML = '<img id="youtube-icon" src=""/><div id="youtube-player"></div>';
-    ctrlq.style.cssText = 'width:150px;margin:2em auto;cursor:pointer;cursor:hand;display:none';
-    ctrlq.onclick = toggleAudio;
+  ctrlq.innerHTML = '<img id="youtube-icon" src=""/><div id="youtube-player"></div>';
+  ctrlq.style.cssText = 'width:150px;margin:2em auto;cursor:pointer;cursor:hand;display:none';
+  ctrlq.onclick = toggleAudio;
 
 
 
-    player = new YT.Player('youtube-player', {
-      height: '0',
-      width: '0',
-      videoId: videoId,
-      playerVars: {
-        autoplay: 0,
-        loop: 0,
-      },
-      events: {
-        'onReady': onPlayerReady,
-        'onStateChange': onPlayerStateChange 
-      } 
-    });
-  } 
+  player = new YT.Player('youtube-player', {
+    height: '0',
+    width: '0',
+    videoId: videoId,
+    playerVars: {
+      autoplay: 0,
+      loop: 0,
+    },
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange 
+    } 
+  });
+} 
 
 
   function toggleAudio() {
