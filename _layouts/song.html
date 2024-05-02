@@ -62,7 +62,7 @@
               Akkorde
             </button>
           </div>
-          <button class="btn btn-secondary" onclick="toggleAudio()" data-video="dQw4w9WgXcQ">Play/Pause Song now</button>
+          <button class="btn btn-secondary" onclick="toggleAudio()">Play/Pause Song now</button>
         </div>
         <div id="player" style="display: none;"></div> <!-- YT Video/Music Player -->
         <div class="mt-2 mt-md-4" id="songtext">
@@ -135,7 +135,7 @@ var player;
   }
 
   function show_yt_video() {
-    if (document.getElementById("youtube-audio").style.display) == "none"
+    if (document.getElementById("youtube-audio").style.display == "none") {
       document.getElementById("youtube-audio").style.display = "block"
     }
     else {
