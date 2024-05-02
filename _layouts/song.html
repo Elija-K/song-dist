@@ -63,7 +63,7 @@
             </button>
           </div>
           <button class="btn btn-secondary" onclick="toggleAudio()" data-video="dQw4w9WgXcQ">Play/Pause Song now</button>
-          <div id="youtube-player"></div> <!-- YT Player -->
+          <div id="player"></div> <!-- YT Player -->
         </div>
         
         <div class="mt-2 mt-md-4" id="songtext">
@@ -92,6 +92,15 @@ var temp = new URLSearchParams(link.split('?')[1]);
 
   // Ruft den Wert des 'v' Parameter ab
 var temp2 = temp.get('v');
+
+// 2. This code loads the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
 
 var player;
       function onYouTubeIframeAPIReady() {
