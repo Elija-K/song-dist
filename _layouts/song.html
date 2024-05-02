@@ -91,7 +91,7 @@ var link = document.getElementById("YTLinkGrabber").innerHTML;
 var temp = new URLSearchParams(link.split('?')[1]);
 
   // Ruft den Wert des 'v' Parameter ab
-var temp2 = searchParams.get('v');
+var temp2 = temp.get('v');
 
 var player;
       function onYouTubeIframeAPIReady() {
