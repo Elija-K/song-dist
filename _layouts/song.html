@@ -150,12 +150,12 @@ var videoplayer;
   }
   function showytvideo() {
     var videoplayerhidden;
-    videoplayerhidden = document.getElementById(videoplayer).hidden; 
-    if (videoplayerhidden == 1) {
-      videoplayerhidden = 0;
+    videoplayerhidden = document.getElementById(videoplayer).style.display; 
+    if (videoplayerhidden === block) {
+      videoplayerhidden = hidden;
     }
     else {
-      videoplayerhidden = 1;
+      videoplayerhidden = block;
     }
   }
 
