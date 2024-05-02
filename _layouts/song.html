@@ -73,7 +73,7 @@
     </div>
   </div>
   <iframe src="https://elija-k.github.io/tc-song-dist/viewer-js/#/songs/{{ page.akkorde }}" id="chords" style="display: none;height: 100vh;" class="mt-2 mt-md-4 ratio"></iframe>
-  <p id="YTLinkGrabber" hidden>Test</p>
+  <p id="YTLinkGrabber" hidden>{{ youtube }}</p>
   <script>
 // Test Start
 // Test Start
@@ -93,22 +93,20 @@ var searchParams = new URLSearchParams(link.split('?')[1]);
 var videoId = searchParams.get('v');
 
 console.log(videoId); // Gibt den Parameter aus
-function onYouTubeIframeAPIReady() {
-
-  player = new YT.Player('youtube-player', {
-    height: '0',
-    width: '0',
-    videoId: videoId,
-    playerVars: {
-      autoplay: 0,
-      loop: 0,
-    },
-    events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange 
-    } 
-  });
-} 
+player = new YT.Player('youtube-player', {
+  height: '0',
+  width: '0',
+  videoId: videoId,
+  playerVars: {
+    autoplay: 0,
+    loop: 0,
+  },
+  events: {
+    'onReady': onPlayerReady,
+    'onStateChange': onPlayerStateChange 
+  } 
+});
+ 
 
 
   function toggleAudio() {
