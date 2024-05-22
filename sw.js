@@ -12,7 +12,7 @@ const { CacheFirst, NetworkFirst, StaleWhileRevalidate } = workbox.strategies;
 const { CacheableResponse } = workbox.cacheableResponse;
 
 workbox.core.setCacheNameDetails({
-  prefix: 'tc.soraxem.ch',
+  prefix: 'elija-k.github.io/tc-song-dist/',
   suffix: '{{ site.time | date: "%Y%m%d%H%M" }}'
 });
 

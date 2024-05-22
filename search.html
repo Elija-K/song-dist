@@ -5,6 +5,7 @@ title: Suchen
 <body>
   <div>
     <input class="form-control me-2 mt-4 mb-4" type="text" placeholder="Suchen" id="search-box-js" name="query" oninput="search_text()">
+    <button class="btn btn-secondary" onclick="random_song()">Random Song</button>
   </div>
 
 
@@ -28,7 +29,6 @@ title: Suchen
   function search_text() {
     var inputElement = document.getElementById("search-box-js");
     var value = inputElement.value;
-    console.log(value);
     search_list(value);
   }
 
@@ -46,7 +46,7 @@ title: Suchen
 
 function search_list(query) {
 // Use the attribute value as needed
-console.log(query);
+
 
   var results = search(query);
   var html = '';
@@ -55,6 +55,19 @@ console.log(query);
     html += '<li><a href="' + post.url + '">' + post.title + ' - ' + post.interpret + '</a></li>';
   }
   document.getElementById('search-results').innerHTML = html;
+}
+function random_song() {
+  var songlist = "";
+  var randomsong = "";
+  var lengtharray = "";
+  var thearray = "";
+  songlist = search("");
+  lengtharray = songlist.length;
+  thearray = songlist[Math.floor(Math.random() * lengtharray)];
+  randomsong = "https://elija-k.github.io/" + thearray.url;
+  console.log(randomsong);
+  window.location.href = randomsong;
+  
 }
 
 search_list("");
