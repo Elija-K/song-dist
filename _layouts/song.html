@@ -12,11 +12,6 @@
   <link href="{{ site.baseurl }}/assets/css/main.css" rel="stylesheet">
 </head>
 
-<!-- ##################################### -->
-<!-- ## So you're a web dev             ## -->
-<!-- ## Name every Javascript framework ## -->
-<!-- ##################################### -->
-
 <body>
 
   
@@ -62,6 +57,7 @@
               Akkorde
             </button>
           </div>
+          <button class="btn btn-secondary" onclick="add_favorite()">Add Favorite</button>
           <button class="btn btn-secondary" onclick="toggleAudio()">Play/Pause Song</button>
         </div>
         <div id="player" style="display: none;text-align: center;"></div> <!-- YT Video/Music Player -->
@@ -74,7 +70,49 @@
   </div>
   <iframe src="https://elija-k.github.io/tc-song-dist/viewer-js/#/songs/{{ page.akkorde }}" id="chords" style="display: none;height: 100vh;" class="mt-2 mt-md-4 ratio"></iframe>
   <p id="YTLinkGrabber" hidden>{{ page.youtube }}</p>
-  <script>
+  <p id="UrlGrabber" hidden>{{ page.url }}</p>
+  <p id="TitleGrabber" hidden>{{ page.title }}</p>
+  <p id="InterpretGrabber" hidden>{{ page.interpret }}</p>
+  
+  <script defer>
+function add_favorite() {
+    var songtitle = document.getElementById("TitleGrabber").innerHTML;
+    var songinterpret = document.getElementById("InterpretGrabber").innerHTML;
+    var songurl = document.getElementById("UrlGrabber").innerHTML;
+
+    // Lade vorhandene Favoriten aus dem Cookie (falls vorhanden)
+    var existingFavorites = get_existing_favorites();
+
+    // Füge den neuen Favoriten zur Liste hinzu
+    existingFavorites.push({ title: songtitle, interpret: songinterpret, url: "/tc-song-dist" + songurl });
+
+    // Encode die aktualisierte Favoritenliste in JSON
+    var jsonString = JSON.stringify(existingFavorites);
+
+    // Setze das Cookie 'favorites' mit der aktualisierten Favoritenliste
+    document.cookie = "favorites=" + encodeURIComponent(jsonString) + ";" + " expires=Mon, 07 May 2029 12:00:00 UTC; path=/";
+}
+
+function get_existing_favorites() {
+    var existingFavorites = [];
+
+    // Überprüfe, ob ein Cookie mit dem Namen 'favorites' existiert
+    if (document.cookie.includes("favorites=")) {
+        var cookieValue = decodeURIComponent(document.cookie)
+            .split("; ")
+            .find((row) => row.startsWith("favorites="));
+
+        if (cookieValue) {
+            try {
+                existingFavorites = JSON.parse(cookieValue.split("=")[1]);
+            } catch (error) {
+                console.error("Fehler beim Parsen der Favoritenliste aus dem Cookie:", error);
+            }
+        }
+    }
+
+    return existingFavorites;
+}
 // Test Start
 // Test Start
 // Test Start
@@ -143,25 +181,6 @@ var player;
     element.style.display = "none";
   }
 }
-
-
-// Test End
-// Test End
-// Test End
-
-  if('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/tc-song-dist/sw.js')
-    })
-  }
-  function show_chords() {
-    document.getElementById("songtext").style.display = "none";
-    document.getElementById("chords").style.display = "block"; 
-  }
-  function show_text() {
-    document.getElementById("songtext").style.display = "block";
-    document.getElementById("chords").style.display = "none";
-  }
-  </script>
+</script>
 </body>
 </html>
