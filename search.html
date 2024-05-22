@@ -5,9 +5,15 @@ title: Suchen
 <body>
   <div>
     <input class="form-control me-2 mt-4 mb-4" type="text" placeholder="Suchen" id="search-box-js" name="query" oninput="search_text()">
+    <div class="container-fluid">
+    <button class="btn btn-secondary" onclick="random_song()">Random Song</button>
+    <button class="btn btn-secondary" onclick="reset_favorite()">Favoriten löschen</button>
+    </div>
   </div>
-
-
+  <h5 id="favorite-title">Deine Favoriten</h5>
+  <div id="favorite-results">
+  </div>
+  <h5 id="search-title">Songs</h5>
   <div id="search-results">
     
   </div> 
@@ -28,7 +34,6 @@ title: Suchen
   function search_text() {
     var inputElement = document.getElementById("search-box-js");
     var value = inputElement.value;
-    console.log(value);
     search_list(value);
   }
 
@@ -46,17 +51,95 @@ title: Suchen
 
 function search_list(query) {
 // Use the attribute value as needed
-console.log(query);
+
 
   var results = search(query);
   var html = '';
   for (var i = 0; i < results.length; i++) {
     var post = results[i];
+    console.log("results (i): " + results[i]);
     html += '<li><a href="' + post.url + '">' + post.title + ' - ' + post.interpret + '</a></li>';
   }
+  // Anzahl Songs
+  let resultsarray = "[" + results + "]";
+  console.log(resultsarray);
+  const bigarray = resultsarray.split(",");
+  let listarraylength = bigarray.length;
+  // SHOW IT
   document.getElementById('search-results').innerHTML = html;
+  document.getElementById("search-title").innerHTML = "Songs " + "(" + listarraylength + ")";
+}
+function random_song() {
+  var songlist = "";
+  var randomsong = "";
+  var lengtharray = "";
+  var thearray = "";
+  songlist = search("");
+  lengtharray = songlist.length;
+  thearray = songlist[Math.floor(Math.random() * lengtharray)];
+  randomsong = "https://elija-k.github.io/" + thearray.url;
+  window.location.href = randomsong;
+}
+function list_favorite() {
+    // Retrieve the 'favorites' cookie value
+    var favoritesCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('favorites='));
+
+    if (favoritesCookie) {
+        console.log('Favorites cookie found:', favoritesCookie); // Debugging output
+
+        // Extract JSON string from the 'favorites' cookie value
+        var jsonString = decodeURIComponent(favoritesCookie.split('=')[1]);
+        console.log('Decoded JSON string:', jsonString); // Debugging output
+
+        if (jsonString === "") {
+          document.getElementById("favorite-results").innerHTML = "Du hast keine Favoriten :(";
+          document.getElementById("favorite-title").innerHTML = "Deine Favoriten (0)";
+        }
+        else {
+        try {
+            // Parse the JSON string into an array of song objects
+            var favoriteSongs = JSON.parse(jsonString);
+            console.log('Parsed favorite songs:', favoriteSongs); // Debugging output
+
+            // Create HTML content for displaying all favorite songs
+            var searchResultHTML = '';
+
+            // Loop through each song in the favoriteSongs array
+            favoriteSongs.forEach(function(song) {
+                searchResultHTML += '<li><a href="' + song.url + '">' + song.title + ' - ' + song.interpret + '</a></li>';
+            });
+
+
+            console.log('Generated HTML content:', searchResultHTML); // Debugging output
+            titleResultHTML = favoriteSongs.length
+
+            // Display the search result on the webpage
+            var searchFavoriteList = document.getElementById('favorite-results');
+            var titleFavoriteList = document.getElementById("favorite-title");
+            console.log("Variable set");
+            if (searchFavoriteList) {
+                // Use innerHTML to set the generated HTML content
+                searchFavoriteList.innerHTML = searchResultHTML;
+                titleFavoriteList.innerHTML = "Deine Favoriten " + "(" + titleResultHTML + ")"
+                console.log('HTML content set to element with ID "favorite-results".'); // Debugging output
+            } else {
+                console.error("Element with ID 'favorite-results' not found.");
+                document.getElementById("favorite-results").innerHTML = "Es ist ein Fehler aufgetreten (Element Fehler) :("
+            }
+        } catch (error) {
+            console.error("Error parsing JSON from 'favorites' cookie:", error);
+            document.getElementById("favorite-results").innerHTML = "Es ist ein Fehler aufgetreten (Parsing Fehler) :("
+        }
+    }
+    }
+}
+function reset_favorite() {
+  document.getElementById("favorite-results").innerHTML = "Du hast keine Favoriten :(";
+  document.getElementById("favorite-title").innerHTML = "Deine Favoriten (0)";
+  document.cookie = "favorites=; expires=Mon, 07 May 2029 12:00:00 UTC; path=/;";
 }
 
 search_list("");
+list_favorite();
 
 </script>

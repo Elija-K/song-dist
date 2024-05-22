@@ -2,6 +2,8 @@
 title: 10’000 Reasons (Bless the Lord)
 interpret: Jonas Myrin and Matt Redman 
 akkorde: 10000-reasons-bless-the-lord.pdf
+youtube:
+spotify:
 ---
 
 **Chorus**  
