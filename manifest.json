@@ -9,8 +9,8 @@
   "background_color": "#fcecca",
   "theme_color": "#af5b5b",
   
-  "start_url": "https://elija-k.github.io/tc-song-dist/",
-  "scope": "https://elija-k.github.io/tc-song-dist/",
+  "start_url": "https://elija-k.github.io/",
+  "scope": "https://elija-k.github.io/",
   "handle_links": "preferred",
   
   "display": "standalone",
@@ -18,13 +18,13 @@
   "orientation": "any",
   
   "icons": [{
-    "src": "/tc-song-dist/icon.png",
+    "src": "/icon.png",
     "sizes":"1024x1024",
     "type": "image/png",
     "purpose":"any"
   },
   {
-    "src": "/tc-song-dist/icon.png",
+    "src": "/icon.png",
     "sizes":"1024x1024",
     "type": "image/png",
     "purpose":"maskable"

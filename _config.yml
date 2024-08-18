@@ -1,5 +1,5 @@
-url: "https://elija-k.github.io/tc-song-dist/"
-baseurl: "/tc-song-dist/"
+url: "https://songbuch.justsomeone.ch/"
+baseurl: "/"
 defaults:
   - scope:
       path: ""

@@ -2,8 +2,7 @@
 {% assign l = site.data.languages | where: "name", page.language | first -%}
 <html lang="{{ l.htmlLangTag }}">
 
-<head>
-  <link rel="icon" type="image/png" href="/tc-song-dist/icon.png"/>
+
   <link rel="manifest" href="manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
@@ -41,7 +40,7 @@
   <script>
   if('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/tc-song-dist/sw.js')
+      navigator.serviceWorker.register('/sw.js')
     })
   }
   </script>

@@ -3,7 +3,6 @@
 <html lang="{{ l.htmlLangTag }}">
 
 <head>
-  <link rel="icon" type="image/png" href="/tc-song-dist/icon.png"/>
   <link rel="manifest" href="/manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
@@ -68,7 +67,7 @@
       </div>
     </div>
   </div>
-  <iframe src="https://elija-k.github.io/tc-song-dist/viewer-js/#/songs/{{ page.akkorde }}" id="chords" style="display: none;height: 100vh;" class="mt-2 mt-md-4 ratio"></iframe>
+  <iframe src="https://songbuch.justsomeone.ch/viewer-js/#/songs/{{ page.akkorde }}" id="chords" style="display: none;height: 100vh;" class="mt-2 mt-md-4 ratio"></iframe>
   <p id="YTLinkGrabber" hidden>{{ page.youtube }}</p>
   <p id="UrlGrabber" hidden>{{ page.url }}</p>
   <p id="TitleGrabber" hidden>{{ page.title }}</p>
@@ -84,7 +83,7 @@ function add_favorite() {
     var existingFavorites = get_existing_favorites();
 
     // Füge den neuen Favoriten zur Liste hinzu
-    existingFavorites.push({ title: songtitle, interpret: songinterpret, url: "/tc-song-dist" + songurl });
+    existingFavorites.push({ title: songtitle, interpret: songinterpret, url: songurl });
 
     // Encode die aktualisierte Favoritenliste in JSON
     var jsonString = JSON.stringify(existingFavorites);
