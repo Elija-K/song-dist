@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "TC Chläggi",
+  "short_name": "TC Chläggi",
+  "description": "Teenagerclub-app hier sind alle wichtigen dinge zum TC zu finden",
+  "categories": ["music","lifestyle"],
+  "lang": "de",
+
+  "background_color": "#fcecca",
+  "theme_color": "#af5b5b",
+  
+  "start_url": "https://elija-k.github.io/",
+  "scope": "https://elija-k.github.io/",
+  "handle_links": "preferred",
+  
+  "display": "standalone",
+  "display_override": "window-controls-overlay",
+  "orientation": "any",
+  
+  "icons": [{
+    "src": "/icon.png",
+    "sizes":"1024x1024",
+    "type": "image/png",
+    "purpose":"any"
+  },
+  {
+    "src": "/icon.png",
+    "sizes":"1024x1024",
+    "type": "image/png",
+    "purpose":"maskable"
+  }]
+}

@@ -1,0 +1,22 @@
+---
+title: Suchen
+---
+
+<body>
+  <div>
+    <input class="form-control me-2 mt-4 mb-4" type="text" placeholder="Suchen" id="search-box-js" name="query" oninput="search_text()">
+    <div class="container-fluid">
+    <button class="btn btn-secondary" onclick="random_song()">Random Song</button>
+    <button class="btn btn-secondary" onclick="reset_favorite()">Favoriten löschen</button>
+    </div>
+  </div>
+  <h5 id="favorite-title">Deine Favoriten</h5>
+  <div id="favorite-results">
+  </div>
+  <h5 id="search-title">Songs</h5>
+  <div id="search-results">
+    
+  </div> 
+</body>
+
+<script src="assets/js/search.js"></script>

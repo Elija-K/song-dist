@@ -1,0 +1,27 @@
+.form-check-input {
+  margin-right: 4px;
+}
+
+pre.highlight {
+  padding: 10px;
+}
+
+.task-list {
+  list-style-type: none;
+}
+
+.btn-secondary {
+  --bs-btn-bg: #af5b5b;
+}
+
+html {
+  background-color: #fcecca;
+}
+
+body {
+  background-color: #fcecca;
+}
+
+nav {
+  background-color: #fcecca;
+}

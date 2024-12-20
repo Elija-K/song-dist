@@ -1,0 +1,21 @@
+url: "https://songbuch.justsomeone.ch/"
+baseurl: "/"
+defaults:
+  - scope:
+      path: ""
+      type: "authors"
+    values:
+      layout: "author"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+  - scope:
+      path: "songs"
+    values:
+      layout: "song"
