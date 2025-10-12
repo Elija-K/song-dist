@@ -191,6 +191,17 @@ var player;
         text.style.display = "block";
     }
   }
+  function show_text() {
+    var element = document.getElementById("chords");
+    var text = document.getElementById("songtext");
+    if (text.style.display === "none") {
+      text.style.display = "block";
+      element.style.display = "none";
+    } else {
+        text.style.display = "none";
+        element.style.display = "block";
+    }
+  }
 </script>
 </body>
 </html>
