@@ -180,6 +180,17 @@ var player;
     element.style.display = "none";
   }
 }
+  function show_chords() {
+    var element = document.getElementById("chords");
+    var text = document.getElementById("songtext");
+    if (element.style.display === "none") {
+      element.style.display = "block";
+      text.style.display = "none";
+    } else {
+        element.style.display = "none";
+        text.style.display = "block";
+    }
+  }
 </script>
 </body>
 </html>
