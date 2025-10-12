@@ -6,43 +6,47 @@ youtube: https://youtu.be/tshkPprJGbU?si=Tiokjep31c-mLuYR
 ---
 
 **Verse 1**  
-I halt mi fest a all dem, was du seisch  
-Wenn i am Bode liig, hebsch du mi uuf  
-I halt mi fest a all dem, was du seisch  
-Wenn Lüt was anders säged, lueg i zu dir uuf  
+Ich kämpf immer wieder gäge d’Stimm, wo seit: «Ich bi nid gnueg!  
+Ich wird’s eh nie schaffe!» All die Lüüge lönd mich nid in Rueh.  
+Bin ich d’Summe vo all mine Tate, oder bin ich meh?  
+Rüef du mir in Erinnerig, wer ich i dine Auge bi.  
+ 
+**Chorus**  
+Du seisch, ich bi gliebt, egal wien ich mich fühl.  
+Du seisch, ich bi starch, au wenn ich’s jetzt nid gspüür.  
+Du seisch, ich bi treit. Han ich au voll verseit –  
+ich ghööre gliich zu dir, wil du hesch mir das gseit.  
+Ich glaube dir, ich glaube dir,  
+Was du seisch vo mir,    
+glaub ich dir.  
+
+**Verse 2**   
+Was du über mich dänksch, das isch die einzig Sach, wo würklich zellt.  
+In dir find ich min Wärt, in dir find ich mini Identität.  
 
 **Chorus**  
-Du seisch, i bi geliebt, wenn i's nöd füehle cha  
-Du seisch, i bi starch, wenn i mi schwach gseh stah  
-Du seisch, i bi ghalte, wenn i am Zämebreche bi  
-Und wenn i s'Gfühl ha, nüt meh wert z'si, seisch du, du g'hörsch zu mir  
-Ja, i glaube dra, was du über mi seisch  
-
-**Verse 2**  
-Alli mini Zweiffel probiered, mi z'verwirre  
-Alli mini Ängscht wänd mini Hoffnig näh  
-Doch dini Stimm, die übertönt de Lärm  
-Und erinnert mi, es wird alles wieder guet  
-
-**Chorus**  
-Du seisch, i bi geliebt, wenn i's nöd füehle cha  
-Du seisch, i bi starch, wenn i mi schwach gseh stah  
-Du seisch, i bi ghalte, wenn i am Zämebreche bi  
-Und wenn i s'Gfühl ha, nüt meh wert z'si, seisch du, du g'hörsch zu mir  
-Ja, i glaube dra, was du über mi seisch  
+Du seisch, ich bi gliebt, egal wien ich mich fühl.  
+Du seisch, ich bi starch, au wenn ich’s jetzt nid gspüür.  
+Du seisch, ich bi treit. Han ich au voll verseit –  
+ich ghööre gliich zu dir, wil du hesch mir das gseit.  
+Ich glaube dir, ich glaube dir,  
+Was du seisch vo mir,    
+glaub ich dir.  
 
 **Bridge**  
-Ich nime alles, was i ha, und leg's vor dich hie  
-Du nimmst mis Läbe, und formsch es neu, so wie du's willsch ha  
+Alles, won ich ha, bring ich jetzt dir und leg’s uus vor dir.  
+Au i mim Versäge, Gott, hesch schlussändlich gliich de Sieg.  
 
 **Chorus**  
-Du seisch, i bi geliebt, wenn i's nöd füehle cha  
-Du seisch, i bi starch, wenn i mi schwach gseh stah  
-Du seisch, i bi ghalte, wenn i am Zämebreche bi  
-Und wenn i s'Gfühl ha, nüt meh wert z'si, seisch du, du g'hörsch zu mir  
-Ja, i glaube dra, was du über mi seisch  
+Du seisch, ich bi gliebt, egal wien ich mich fühl.  
+Du seisch, ich bi starch, au wenn ich’s jetzt nid gspüür.  
+Du seisch, ich bi treit. Han ich au voll verseit –  
+ich ghööre gliich zu dir, wil du hesch mir das gseit.  
+Ich glaube dir, ich glaube dir,  
+Was du seisch vo mir,  
+glaub ich dir.  
 
 **Outro**  
-Ja, i glaube dra  
-Was du über mi seisch  
-Oh, i glaube dra
+Ich glaube dir, ich glaube dir,  
+Was du seisch vo mir,  
+glaub ich dir.  
