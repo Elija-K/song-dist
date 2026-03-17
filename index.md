@@ -3,9 +3,19 @@ layout: default
 title: Home
 ---
 
-# Songbuch
+# Das Worship-Songbuch
 
-Hier kannst du Songtexte zu Liedern anschauen und sie gleich in der App anhören, du kannst auch gerne Lieder wünschen und somit beitragen das dieses Songbuch noch erfüllter wird.
+Hallo, schön hast du den Weg hier hin gefunden. Hier findest du ganz viele Worship Songtexte die du singen oder anhören kannst. Es gibt meist auch noch Chords dazu, damit du auch gleich auf einem Instrument spielen kannst.
+
+Falls irgendwelche Songwünsche hast darfst du sie mir gerne zusenden.
+
+Ich bitte jedoch folgende Daten:
+
+- Titel
+- Interpret
+- Falls du hast den Songtext
+- Falls du hast den Spotify und YouTube Link
+- Falls du hast die Chords als PDF
 
 <a href="mailto:admin@justsomeone.ch" class="btn btn-secondary" target="_blank">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-music-fill" viewBox="0 0 16 16">
