@@ -69,16 +69,7 @@
       </div>
     </div>
     <div id="pdf-viewer" style="height: 100vh"></div>
- 
-    <script type="module">
-      import EmbedPDF from 'https://cdn.jsdelivr.net/npm/@embedpdf/snippet@2/dist/embedpdf.js';
-      EmbedPDF.init({
-        type: 'container',
-        target: document.getElementById('chords'),
-        src: 'https://songbuch.justsomeone.ch/songs/{{ page.akkorde }}',
-        theme: { preference: 'system' }
-      });
-    </script>
+    <pre id="songtext" class="mt-2 mt-md-4" style="white-space: pre-wrap;">{{ page.content }}</pre>
     <div id="chords" style="display: none;height: 100vh;" class="mt-2 mt-md-4 ratio"></div>
     <p id="YTLinkGrabber" hidden>{{ page.youtube }}</p>
     <p id="UrlGrabber" hidden>{{ page.url }}</p>
@@ -104,9 +95,24 @@
       function show_chords() {
         var element = document.getElementById("chords");
         var text = document.getElementById("songtext");
+        var akkorde = '{{ page.akkorde }}';
         if (element.style.display === "none") {
           element.style.display = "block";
           text.style.display = "none";
+          if (akkorde && !window._embedPdfLoaded) {
+            window._embedPdfLoaded = true;
+            import('https://cdn.jsdelivr.net/npm/@embedpdf/snippet@2/dist/embedpdf.js')
+              .then(function(module) {
+                var EmbedPDF = module.default || module;
+                EmbedPDF.init({
+                  type: 'container',
+                  target: document.getElementById('chords'),
+                  src: 'https://songbuch.justsomeone.ch/songs/' + akkorde,
+                  theme: { preference: 'system' }
+                });
+              })
+              .catch(function(e){ console.error('EmbedPDF load failed', e); });
+          }
         } else {
             element.style.display = "none";
             text.style.display = "block";
@@ -115,12 +121,27 @@
       function show_text() {
         var element = document.getElementById("chords");
         var text = document.getElementById("songtext");
+        var akkorde = '{{ page.akkorde }}';
         if (text.style.display === "none") {
           text.style.display = "block";
           element.style.display = "none";
         } else {
             text.style.display = "none";
             element.style.display = "block";
+            if (akkorde && !window._embedPdfLoaded) {
+              window._embedPdfLoaded = true;
+              import('https://cdn.jsdelivr.net/npm/@embedpdf/snippet@2/dist/embedpdf.js')
+                .then(function(module) {
+                  var EmbedPDF = module.default || module;
+                  EmbedPDF.init({
+                    type: 'container',
+                    target: document.getElementById('chords'),
+                    src: 'https://songbuch.justsomeone.ch/songs/' + akkorde,
+                    theme: { preference: 'system' }
+                  });
+                })
+                .catch(function(e){ console.error('EmbedPDF load failed', e); });
+            }
         }
       }
     </script>
