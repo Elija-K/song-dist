@@ -79,39 +79,10 @@ function add_favorite() {
     var songinterpret = document.getElementById("InterpretGrabber").innerHTML;
     var songurl = document.getElementById("UrlGrabber").innerHTML;
 
-    // Lade vorhandene Favoriten aus dem Cookie (falls vorhanden)
-    var existingFavorites = get_existing_favorites();
-
-    // Füge den neuen Favoriten zur Liste hinzu
-    existingFavorites.push({ title: songtitle, interpret: songinterpret, url: songurl });
-
-    // Encode die aktualisierte Favoritenliste in JSON
-    var jsonString = JSON.stringify(existingFavorites);
-
     // Setze das Cookie 'favorites' mit der aktualisierten Favoritenliste
-    document.cookie = "favorites=" + encodeURIComponent(jsonString) + ";" + " expires=Mon, 07 May 2029 12:00:00 UTC; path=/";
+    document.cookie = "fav-{{ page.title | slugify }}=" + encodeURIComponent(jsonString) + ";" + " expires=Mon, 07 May 2029 12:00:00 UTC; path=/";
 }
 
-function get_existing_favorites() {
-    var existingFavorites = [];
-
-    // Überprüfe, ob ein Cookie mit dem Namen 'favorites' existiert
-    if (document.cookie.includes("favorites=")) {
-        var cookieValue = decodeURIComponent(document.cookie)
-            .split("; ")
-            .find((row) => row.startsWith("favorites="));
-
-        if (cookieValue) {
-            try {
-                existingFavorites = JSON.parse(cookieValue.split("=")[1]);
-            } catch (error) {
-                console.error("Fehler beim Parsen der Favoritenliste aus dem Cookie:", error);
-            }
-        }
-    }
-
-    return existingFavorites;
-}
 // Test Start
 // Test Start
 // Test Start

@@ -4,7 +4,7 @@ TODO Liste:
 
 - [] Favoriten einzel Löschen/Hinzufügen
 
-- [] Gott isch mit üüs - Richtiger Text
+- [X] Gott isch mit üüs - Richtiger Text
 
 - [] Der Herr segne dich - Formatierung anpassen + Richtiger (Boxenstopp) Text
 
@@ -13,6 +13,8 @@ TODO Liste:
 - [] neues WebUI-Layout
 
 - [] Spotify und Youtube Link öffnen lassen + noch Play Pause als eigene MP3
+
+- [] Text geht mit MP3 mit
 
 - [] Text/Akkord/Noten hinzufügen.
 
