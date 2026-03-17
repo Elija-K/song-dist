@@ -1,3 +1,23 @@
 TODO Liste:
 
-Search function in search.html so machen das es pro ordner in /songs/ sucht und das alles in gruppen macht (und das suchen dementsprechend auch)
+- [] Search Funktion so machen das es in /songs/ nach Ordner sucht und diese als Gruppen anzeigt und alle ohne Ordner Gruppenlos anzeigt.
+
+- [] Favoriten einzel Löschen/Hinzufügen
+
+- [] Gott isch mit üüs - Richtiger Text
+
+- [] Der Herr segne dich - Formatierung anpassen + Richtiger (Boxenstopp) Text
+
+- [] Eine neue Startseite
+
+- [] neues WebUI-Layout
+
+- [] Spotify und Youtube Link öffnen lassen + noch Play Pause als eigene MP3
+
+- [] Text/Akkord/Noten hinzufügen.
+
+- [] Schönerer PDF Reader
+
+- [] Präsentationsmodus für Beamer oder so
+
+- [] Playlist's die man Teilen kann

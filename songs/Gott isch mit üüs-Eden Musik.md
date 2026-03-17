@@ -1,53 +1,34 @@
 ---
 title: Gott isch mit üüs
 interpret: Eden Musik
-akkorde: Eden-Musik-Gott-isch-mit-uus.pdf
-youtube: https://www.youtube.com/watch?v=smHTvdpKmEE
-spotify: https://open.spotify.com/track/39TR3HOBA6e59OV4mnremO
+akkorde: Gott-isch-mit-üüs-Eden-Music.pdf
+youtube: https://music.youtube.com/watch?v=vJglPOEIhUE&si=SsQa8koR0ckj_2v3
+spotify: https://open.spotify.com/track/39TR3HOBA6e59OV4mnremO?si=191b64e996f2497c
 ---
 
-**Verse 1**  
-Du Zions trost, du lang ersehnte  
-Du mächtige Gott, du riich an gnade  
-Alli Völker werded gseh  
-Wer du bisch und was du tuesch  
+**Vers 1**  
+Da isch Hoffnig  
+ä Gott wo üs dür all die Täler füehrt  
+Da isch Hoffnig  
+geisch mit üs dür jede Sturm und jedes Füür  
+
+**Pre-Chorus**  
+Wüu du bisch da  
+und du blibsch nach  
 
 **Chorus**  
-Immanuel, Gott isch mit üüs  
-Mir sind es Volk wo dir ganz ghört  
-Jesus, für immer mit dir  
-Du bisch de König vo üsem Läbe  
+Immanuel, Gott isch mit üs  
+a jedem Ort, zu jeder Zyt  
+chunnsch mit dyr Gägewart  
 
-**Verse 2**  
-De Himmel und d'Ärde werded vergah  
-Aber dini Wort, die blibed für immer stah  
-Dini Liebi, die isch unbesiegbar  
-Grösser als de Tod, stärker als s'Grab  
-
-**Chorus**  
-Immanuel, Gott isch mit üüs  
-Mir sind es Volk wo dir ganz ghört  
-Jesus, für immer mit dir  
-Du bisch de König vo üsem Läbe  
+**Vers 2**  
+Da isch Fride  
+wo griifbar isch i jeder Läbenslag  
+ja wahre Fride  
+wo höcher isch als irdische Verstand  
 
 **Bridge**  
-D'Hoffnig isch da, d'Zuekunft kunnt  
-Wüu du in üs wohnsch, Jesus  
-S'Liecht schiint hell, d'Nacht isch verbii  
-Wüu du üse Retter bisch  
-D'Hoffnig isch da, d'Zuekunft kunnt  
-Wüu du in üs wohnsch, Jesus  
-S'Liecht schiint hell, d'Nacht isch verbii  
-Wüu du üse Retter bisch  
-
-**Chorus**  
-Immanuel, Gott isch mit üüs  
-Mir sind es Volk wo dir ganz ghört  
-Jesus, für immer mit dir  
-Du bisch de König vo üsem Läbe  
-
-**Outro**  
-Oh-oh-oh-ohh  
-Oh-oh-oh-ohh  
-Du bisch de König vo üsem Läbe  
-Oh-oh-oh-ohh
+Ke Bärg, kes Tal cha üs trenne vo dir Güeti  
+jede Tag, jedy Nacht, wiene Wulche, wienes Füür  
+geisch üs vorah, o dür d Wüesti  
+bisch mit üs und du blibsch üs immer nach  
