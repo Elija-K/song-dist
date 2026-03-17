@@ -9,8 +9,8 @@
   "background_color": "#fcecca",
   "theme_color": "#af5b5b",
   
-  "start_url": "https://songbuch.justsomeone.ch",
-  "scope": "https://songbuch.justsomeone.ch/",
+  "start_url": "https://elija-k.github.io/",
+  "scope": "https://elija-k.github.io/",
   "handle_links": "preferred",
   
   "display": "standalone",

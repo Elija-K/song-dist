@@ -6,11 +6,11 @@ TODO Liste:
 
 - [X] Gott isch mit üüs - Richtiger Text
 
-- [X] Der Herr segne dich - Formatierung anpassen + Richtiger (Boxenstopp) Text
+- [] Der Herr segne dich - Formatierung anpassen + Richtiger (Boxenstopp) Text
 
-- [X] Eine neue Startseite
+- [] Eine neue Startseite
 
-- [X] neues WebUI-Layout
+- [] neues WebUI-Layout
 
 - [] Spotify und Youtube Link öffnen lassen + noch Play Pause als eigene MP3
 
