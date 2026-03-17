@@ -6,7 +6,7 @@ TODO Liste:
 
 - [X] Gott isch mit üüs - Richtiger Text
 
-- [] Der Herr segne dich - Formatierung anpassen + Richtiger (Boxenstopp) Text
+- [X] Der Herr segne dich - Formatierung anpassen + Richtiger (Boxenstopp) Text
 
 - [] Eine neue Startseite
 
@@ -18,7 +18,7 @@ TODO Liste:
 
 - [] Text/Akkord/Noten hinzufügen.
 
-- [] Schönerer PDF Reader. <- **AKTIVES TODO**
+- [] Schönerer PDF Reader.
 
 - [] Präsentationsmodus für Beamer.
 
