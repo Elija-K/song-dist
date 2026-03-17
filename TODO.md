@@ -14,6 +14,8 @@ TODO Liste:
 
 - [X] Spotify und Youtube Link öffnen lassen
 
+- [] Fix für den PDF Viewer
+
 - [] Text geht mit MP3 mit.
 
 - [] Präsentationsmodus für Beamer.
