@@ -68,6 +68,7 @@
         </div>
       </div>
     </div>
+    <div id="chords"></div>
     <p id="YTLinkGrabber" hidden>{{ page.youtube }}</p>
     <p id="UrlGrabber" hidden>{{ page.url }}</p>
     <p id="TitleGrabber" hidden>{{ page.title }}</p>
@@ -111,28 +112,16 @@
             element.style.display = "block";
         }
       }
+    </script>
+    <script type="module">
+      import EmbedPDF from 'https://cdn.jsdelivr.net/npm/@embedpdf/snippet@2/dist/embedpdf.js';
     
-    function show_pdf() {
-
-      var element = document.getElementById("chords");
-        var text = document.getElementById("songtext");
-        if (element.style.display === "none") {
-          element.style.display = "block";
-          text.style.display = "none";
-          import EmbedPDF from 'https://cdn.jsdelivr.net/npm/@embedpdf/snippet@2/dist/embedpdf.js';
-          EmbedPDF.init({
-            type: 'container',
-            target: document.getElementById('pdf-viewer'),
-            src: 'https://songbuch.justsomeone.ch/songs/{{ page.akkorde }}',
-            theme: { preference: 'system' }
+      EmbedPDF.init({
+        type: 'container',
+        target: document.getElementById('chords'),
+        src: 'https://songbuch.justsomeone.ch/songs/{{ page.akkorde }}',
+        theme: { preference: 'system' }
       });
-        } else {
-            element.style.display = "none";
-            text.style.display = "block";
-            element.innerHTML = "";
-        }
-      }
-    }
     </script>
   </body>
 </html>
