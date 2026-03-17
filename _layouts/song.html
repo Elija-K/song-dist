@@ -69,7 +69,7 @@
       </div>
     </div>
     <div id="chords" style="display:none;min-height:60vh;"></div>
-    <pre id="songtext" class="mt-2 mt-md-4" style="white-space: pre-wrap;">{{ page.content }}</pre>
+    <pre id="songtext" class="mt-2 mt-md-4 text-start" style="white-space: pre-wrap; max-width:720px; margin:0 auto; text-align:left;">{{ page.content }}</pre>
     <p id="UrlGrabber" hidden>{{ page.url }}</p>
     <p id="TitleGrabber" hidden>{{ page.title }}</p>
     <p id="InterpretGrabber" hidden>{{ page.interpret }}</p>
@@ -127,6 +127,5 @@
         }
       }
     </script>
-    <script defer src="{{ site.baseurl }}/assets/js/pdf-viewer.js"></script>
   </body>
 </html>
