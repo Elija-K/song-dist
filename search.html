@@ -81,62 +81,59 @@ title: Suchen
   window.location.href = randomsong;
   }
   function list_favorite() {
-    // Retrieve the 'favorites' cookie value
-    var favoritesCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('fav-'));
+    // Read all cookies whose name starts with 'fav-' and parse each value as a single favorite song
+    var cookies = document.cookie ? document.cookie.split(';').map(function(c){ return c.trim(); }) : [];
+    var favCookies = cookies.filter(function(c){ return c.indexOf('=') > -1 && c.split('=')[0].startsWith('fav-'); });
 
-    if (favoritesCookie) {
-        console.log('Favorites cookie found:', favoritesCookie); // Debugging output
-
-        // Extract JSON string from the 'favorites' cookie value
-        var jsonString = decodeURIComponent(favoritesCookie.split('=')[1]);
-        console.log('Decoded JSON string:', jsonString); // Debugging output
-
-        if (jsonString === "") {
-          document.getElementById("favorite-results").innerHTML = "Du hast keine Favoriten :(";
-          document.getElementById("favorite-title").innerHTML = "Deine Favoriten (0)";
-        }
-        else {
-        try {
-            // Parse the JSON string into an array of song objects
-            var favoriteSongs = JSON.parse(jsonString);
-            console.log('Parsed favorite songs:', favoriteSongs); // Debugging output
-
-            // Create HTML content for displaying all favorite songs
-            var searchResultHTML = '';
-
-            // Loop through each song in the favoriteSongs array
-            favoriteSongs.forEach(function(song) {
-                searchResultHTML += '<li><a href="' + song.url + '">' + song.title + ' - ' + song.interpret + '</a></li>';
-            });
-
-
-            console.log('Generated HTML content:', searchResultHTML); // Debugging output
-            titleResultHTML = favoriteSongs.length
-
-            // Display the search result on the webpage
-            var searchFavoriteList = document.getElementById('favorite-results');
-            var titleFavoriteList = document.getElementById("favorite-title");
-            console.log("Variable set");
-            if (searchFavoriteList) {
-                // Use innerHTML to set the generated HTML content
-                searchFavoriteList.innerHTML = searchResultHTML;
-                titleFavoriteList.innerHTML = "Deine Favoriten " + "(" + titleResultHTML + ")"
-                console.log('HTML content set to element with ID "favorite-results".'); // Debugging output
-            } else {
-                console.error("Element with ID 'favorite-results' not found.");
-                document.getElementById("favorite-results").innerHTML = "Es ist ein Fehler aufgetreten (Element Fehler) :("
-            }
-        } catch (error) {
-            console.error("Error parsing JSON from 'favorites' cookie:", error);
-            document.getElementById("favorite-results").innerHTML = "Es ist ein Fehler aufgetreten (Parsing Fehler) :("
-        }
+    if (favCookies.length === 0) {
+      document.getElementById("favorite-results").innerHTML = "Du hast keine Favoriten :(";
+      document.getElementById("favorite-title").innerHTML = "Deine Favoriten (0)";
+      return;
     }
+
+    var favoriteSongs = [];
+    favCookies.forEach(function(cookie) {
+      try {
+        var value = cookie.substring(cookie.indexOf('=') + 1);
+        if (!value) return;
+        var song = JSON.parse(decodeURIComponent(value));
+        if (song && song.url) favoriteSongs.push(song);
+      } catch (e) {
+        console.error('Failed to parse favorite cookie:', cookie, e);
+      }
+    });
+
+    if (favoriteSongs.length === 0) {
+      document.getElementById("favorite-results").innerHTML = "Du hast keine Favoriten :(";
+      document.getElementById("favorite-title").innerHTML = "Deine Favoriten (0)";
+      return;
     }
+
+    var searchResultHTML = '';
+    favoriteSongs.forEach(function(song) {
+      searchResultHTML += '<li><a href="' + song.url + '">' + song.title + ' - ' + song.interpret + '</a></li>';
+    });
+
+    var searchFavoriteList = document.getElementById('favorite-results');
+    var titleFavoriteList = document.getElementById("favorite-title");
+    if (searchFavoriteList) searchFavoriteList.innerHTML = searchResultHTML;
+    if (titleFavoriteList) titleFavoriteList.innerHTML = "Deine Favoriten " + "(" + favoriteSongs.length + ")";
   }
   function reset_favorite() {
-  document.getElementById("favorite-results").innerHTML = "Du hast keine Favoriten :(";
-  document.getElementById("favorite-title").innerHTML = "Deine Favoriten (0)";
-  document.cookie = "favorites=; expires=Mon, 07 May 2029 12:00:00 UTC; path=/;";
+  // Clear UI
+  var favResults = document.getElementById("favorite-results");
+  var favTitle = document.getElementById("favorite-title");
+  if (favResults) favResults.innerHTML = "Du hast keine Favoriten :(";
+  if (favTitle) favTitle.innerHTML = "Deine Favoriten (0)";
+
+  // Delete all cookies whose name starts with 'fav-'
+  var cookies = document.cookie ? document.cookie.split(';').map(function(c){ return c.trim(); }) : [];
+  cookies.forEach(function(c){
+    var name = c.split('=')[0];
+    if (name && name.startsWith('fav-')) {
+      document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    }
+  });
   }
 
   search_list("");
