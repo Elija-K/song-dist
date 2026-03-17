@@ -79,6 +79,8 @@ function add_favorite() {
     var songinterpret = document.getElementById("InterpretGrabber").innerHTML;
     var songurl = document.getElementById("UrlGrabber").innerHTML;
 
+    jsonString = JSON.stringify({title: songtitle, interpret: songinterpret, url: songurl});
+
     // Setze das Cookie 'favorites' mit der aktualisierten Favoritenliste
     document.cookie = "fav-{{ page.title | slugify }}=" + encodeURIComponent(jsonString) + ";" + " expires=Mon, 07 May 2029 12:00:00 UTC; path=/";
 }
