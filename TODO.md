@@ -14,12 +14,8 @@ TODO Liste:
 
 - [X] Spotify und Youtube Link öffnen lassen
 
-- [] Fix für den PDF Viewer
+- [X] Fix für den PDF Viewer
 
-- [] Text geht mit MP3 mit.
-
-- [] Präsentationsmodus für Beamer.
-
-- [] Playlist's die man Teilen kann.
+- [] Playlist's die man Teilen kann. <- **Aktives ToDo**
 
 - [] BUGFIX - Wenn keine Lieder dann = 1 <- Darf nicht so sein
