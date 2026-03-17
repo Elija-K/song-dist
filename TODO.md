@@ -8,9 +8,9 @@ TODO Liste:
 
 - [X] Der Herr segne dich - Formatierung anpassen + Richtiger (Boxenstopp) Text
 
-- [] Eine neue Startseite
+- [X] Eine neue Startseite
 
-- [] neues WebUI-Layout
+- [X] neues WebUI-Layout
 
 - [] Spotify und Youtube Link öffnen lassen + noch Play Pause als eigene MP3
 

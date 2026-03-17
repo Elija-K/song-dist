@@ -3,9 +3,26 @@ layout: default
 title: Home
 ---
 
+<!-- ########################################## -->
+<!-- ## For God so loved this world,         ## -->
+<!-- ## that he gave his ONLY begotten Son,  ## -->
+<!-- ## that whosoever believeth in him      ## -->
+<!-- ## should not perish, but have          ## -->
+<!-- ## everlasting life.                    ## -->
+<!-- ## John 3:16 KJV                        ## -->
+<!-- ########################################## -->
+
 # Songbuch
 
-Hier kannst du Songtexte zu Liedern anschauen und sie gleich in der App anhören, du kannst auch gerne Lieder wünschen und somit beitragen das dieses Songbuch noch erfüllter wird.
+Mega Cool bist du hier, hier findest du jede menge an Liedtexte und Chords, hierfür kannst du einfach Oben Rechts auf das Suchsymbol klicken und dein Wunschlied suchen. Wenn eins nicht vorhanden ist darfst du es auch gerne Wünschen, ich brauche dafür folgende Informationen:
+
+- Titel von dem Lied das du wünscht
+- Interpret
+- Wenn du hast den Text
+- Wenn du hast die Chords
+- Wenn du hast den Spotify und YouTube Link
+
+Danke dir fürs mithelfen! Damit das Songbuch immer mehr wächst
 
 <a href="mailto:admin@justsomeone.ch" class="btn btn-secondary" target="_blank">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-music-fill" viewBox="0 0 16 16">
