@@ -82,7 +82,7 @@ title: Suchen
   }
   function list_favorite() {
     // Retrieve the 'favorites' cookie value
-    var favoritesCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('favorites='));
+    var favoritesCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('fav-'));
 
     if (favoritesCookie) {
         console.log('Favorites cookie found:', favoritesCookie); // Debugging output

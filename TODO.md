@@ -2,7 +2,7 @@ TODO Liste:
 
 - [] Search Funktion so machen das es in /songs/ nach Ordner sucht und diese als Gruppen anzeigt und alle ohne Ordner Gruppenlos anzeigt.
 
-- [] Favoriten einzel Löschen/Hinzufügen
+- [] Favoriten einzel Löschen/Hinzufügen (Teils erledigt, die Sachen werden richtig hinzugefügt mit fav-[NAME])
 
 - [X] Gott isch mit üüs - Richtiger Text
 
@@ -14,12 +14,14 @@ TODO Liste:
 
 - [] Spotify und Youtube Link öffnen lassen + noch Play Pause als eigene MP3
 
-- [] Text geht mit MP3 mit
+- [] Text geht mit MP3 mit.
 
 - [] Text/Akkord/Noten hinzufügen.
 
-- [] Schönerer PDF Reader
+- [] Schönerer PDF Reader.
 
-- [] Präsentationsmodus für Beamer oder so
+- [] Präsentationsmodus für Beamer.
 
-- [] Playlist's die man Teilen kann
+- [] Playlist's die man Teilen kann.
+
+- [] BUGFIX - Wenn keine Lieder dann = 1 <- Darf nicht so sein
