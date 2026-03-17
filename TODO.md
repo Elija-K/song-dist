@@ -8,9 +8,9 @@ TODO Liste:
 
 - [X] Der Herr segne dich - Formatierung anpassen + Richtiger (Boxenstopp) Text
 
-- [X] Eine neue Startseite <- **AKTIVES TODO**
+- [X] Eine neue Startseite
 
-- [X] neues WebUI-Layout <- **AKTIVES TODO**
+- [X] neues WebUI-Layout
 
 - [] Spotify und Youtube Link öffnen lassen + noch Play Pause als eigene MP3
 
@@ -18,7 +18,7 @@ TODO Liste:
 
 - [] Text/Akkord/Noten hinzufügen.
 
-- [] Schönerer PDF Reader.
+- [] Schönerer PDF Reader. <- **AKTIVES TODO**
 
 - [] Präsentationsmodus für Beamer.
 

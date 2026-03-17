@@ -68,7 +68,18 @@
         </div>
       </div>
     </div>
-    <iframe src="https://songbuch.justsomeone.ch/viewer-js/#/songs/{{ page.akkorde }}" id="chords" style="display: none;height: 100vh;" class="mt-2 mt-md-4 ratio"></iframe>
+    <div id="pdf-viewer" style="height: 100vh"></div>
+ 
+    <script type="module">
+      import EmbedPDF from 'https://cdn.jsdelivr.net/npm/@embedpdf/snippet@2/dist/embedpdf.js';
+      EmbedPDF.init({
+        type: 'container',
+        target: document.getElementById('chords'),
+        src: 'https://songbuch.justsomeone.ch/songs/{{ page.akkorde }}',
+        theme: { preference: 'system' }
+      });
+    </script>
+    <div id="chords" style="display: none;height: 100vh;" class="mt-2 mt-md-4 ratio"></div>
     <p id="YTLinkGrabber" hidden>{{ page.youtube }}</p>
     <p id="UrlGrabber" hidden>{{ page.url }}</p>
     <p id="TitleGrabber" hidden>{{ page.title }}</p>
