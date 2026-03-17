@@ -57,6 +57,7 @@
             </button>
           </div>
           <button class="btn btn-secondary" onclick="add_favorite()">Add Favorite</button>
+          <button class="btn btn-secondary" onclick="del_favorite()">Delete Favorite</button>
           <button class="btn btn-secondary" onclick="toggleAudio()">Play/Pause Song</button>
         </div>
         <div id="player" style="display: none;text-align: center;"></div> <!-- YT Video/Music Player -->
@@ -83,6 +84,10 @@ function add_favorite() {
 
     // Setze das Cookie 'favorites' mit der aktualisierten Favoritenliste
     document.cookie = "fav-{{ page.title | slugify }}=" + encodeURIComponent(jsonString) + ";" + " expires=Mon, 07 May 2029 12:00:00 UTC; path=/";
+}
+
+function del_favorite() {
+    document.cookie = "fav-{{ page.title | slugify }}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
 // Test Start

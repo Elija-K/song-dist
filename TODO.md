@@ -2,7 +2,7 @@ TODO Liste:
 
 - [] Search Funktion so machen das es in /songs/ nach Ordner sucht und diese als Gruppen anzeigt und alle ohne Ordner Gruppenlos anzeigt.
 
-- [] Favoriten einzel Löschen/Hinzufügen (Teils erledigt, die Sachen werden richtig hinzugefügt mit fav-[NAME])
+- [X] Favoriten einzel Löschen/Hinzufügen
 
 - [X] Gott isch mit üüs - Richtiger Text
 
