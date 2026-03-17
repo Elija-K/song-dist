@@ -12,13 +12,9 @@ TODO Liste:
 
 - [X] neues WebUI-Layout
 
-- [] Spotify und Youtube Link öffnen lassen + noch Play Pause als eigene MP3
+- [X] Spotify und Youtube Link öffnen lassen
 
 - [] Text geht mit MP3 mit.
-
-- [] Text/Akkord/Noten hinzufügen.
-
-- [] Schönerer PDF Reader.
 
 - [] Präsentationsmodus für Beamer.
 
