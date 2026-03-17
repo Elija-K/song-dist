@@ -112,8 +112,6 @@
             element.style.display = "block";
         }
       }
-
-    import EmbedPDF from 'https://cdn.jsdelivr.net/npm/@embedpdf/snippet@2/dist/embedpdf.js';
     
     function show_pdf() {
 
@@ -122,6 +120,7 @@
         if (element.style.display === "none") {
           element.style.display = "block";
           text.style.display = "none";
+          import EmbedPDF from 'https://cdn.jsdelivr.net/npm/@embedpdf/snippet@2/dist/embedpdf.js';
           EmbedPDF.init({
             type: 'container',
             target: document.getElementById('pdf-viewer'),
