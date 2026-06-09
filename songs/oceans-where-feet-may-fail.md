@@ -1,7 +1,6 @@
 ---
 title: Oceans (Where Feet may Fail)
 interpret: Hillsong United
-akkorde: oceans-where-feet-may-fail.pdf
 youtube: https://music.youtube.com/watch?v=DqlpyrHB_Qk
 spotify: https://open.spotify.com/intl-de/track/5Mw9bXG1dLNhbjofkVS2oR
 ---

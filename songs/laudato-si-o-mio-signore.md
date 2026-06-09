@@ -1,7 +1,6 @@
 ---
 title: Laudato Si o mio Signore
 interpret: Maurizio d’Adda
-akkorde: laudato-si-o-mio-signore.pdf
 youtube: https://www.youtube.com/watch?v=Rla81AGiir0
 spotify: https://open.spotify.com/intl-de/track/72gPw2rs8TgsPwGckQWztH?si=47cebc599a47466c
 ---

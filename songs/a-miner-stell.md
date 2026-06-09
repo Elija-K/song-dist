@@ -1,7 +1,6 @@
 ---
 title: A miner Stell
 interpret: Esther Salathé
-akkorde: a-miner-stell.pdf
 youtube: https://music.youtube.com/watch?v=8lVnXl7_LlA
 ---
 

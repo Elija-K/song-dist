@@ -1,7 +1,6 @@
 ---
 title: Lobe den Herrn, meine Seele
 interpret: Norbert Kissel
-akkorde: lobe-den-herrn-meine-seele.pdf
 youtube: https://youtu.be/DR01pMczPwU
 spotify: https://open.spotify.com/intl-de/track/7iu5TF5M7UgbdukxhPvGoH?si=b0f139d37a944cc8
 ---

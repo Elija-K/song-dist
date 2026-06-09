@@ -1,7 +1,6 @@
 ---
 title: Worthy
 interpret: Elevation Worship
-akkorde: worthy.pdf
 youtube: https://youtu.be/Ak5WTb-mgeA
 spotify: https://open.spotify.com/intl-de/track/7qqtTPQIMXAFubamFBPHG5?si=372e1a0746ee41b7
 ---

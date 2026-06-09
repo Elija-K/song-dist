@@ -1,7 +1,6 @@
 ---
 title: Yeshua
 interpret: Jesus Image
-akkorde:
 youtube: https://www.youtube.com/watch?v=ivUb1K0B0zE&list=RDivUb1K0B0zE&start_radio=1
 spotify: https://open.spotify.com/track/4lu2i1XcWo1zze2vealWlB
 ---

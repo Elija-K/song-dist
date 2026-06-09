@@ -1,7 +1,6 @@
 ---
 title: Graves into Gardens
 interpret: Elevation Worship, Brandon Lake
-akkorde: graves-into-gardens.pdf
 youtube: https://www.youtube.com/watch?v=KwX1f2gYKZ4
 spotify: https://open.spotify.com/intl-de/track/4wc8FpW9XCUaoxtii3CiCf?si=f20f883c33e34ff8
 ---

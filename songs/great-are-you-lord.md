@@ -1,7 +1,6 @@
 ---
 title: Great are you Lord
 interpret: Casting Crowns
-akkorde: great-are-you-lord.pdf
 youtube: https://music.youtube.com/watch?v=0TuGHZTdGBQ
 spotify: https://open.spotify.com/intl-de/track/1Hv54MWloXiAZDam1ez840?si=1eae5e3062d842ca
 ---

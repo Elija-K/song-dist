@@ -1,7 +1,6 @@
 ---
 title: My lighthouse
 interpret: Rend Collective
-akkorde: my-lighthouse.pdf
 youtube: https://www.youtube.com/watch?v=reAlJKv7ptU
 spotify: https://open.spotify.com/intl-de/track/5AcdaSVQfLcUKMaqchfBie?si=b32b2350f9d74822
 ---

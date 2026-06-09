@@ -1,7 +1,6 @@
 ---
 title: Du seisch
 interpret: Lauren Daigle
-akkorde: Lauren-Daigle-Du-seisch.pdf
 youtube: https://youtu.be/tshkPprJGbU?si=Tiokjep31c-mLuYR
 ---
 

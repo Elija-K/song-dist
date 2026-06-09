@@ -1,7 +1,6 @@
 ---
 title: Der Herr segne dich
 interpret: Martin Pepper?
-akkorde: der-herr-segne-dich.pdf
 youtube: 
 spotify: 
 ---

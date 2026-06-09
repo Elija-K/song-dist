@@ -1,7 +1,6 @@
 ---
 title: Mighty to Save
 interpret: Hillsong Worship
-akkorde: mighty-to-save.pdf
 youtube: https://www.youtube.com/watch?v=GEAcs2B-kNc
 spotify: https://open.spotify.com/intl-de/track/7kuQv8ZvNutcbqznIbjkGL?si=be673c8361c44e3c
 ---

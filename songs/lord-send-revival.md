@@ -1,7 +1,6 @@
 ---
 title: Lord Send Revival
 interpret: Hillsong Young & Free
-akkorde: lord-send-revival.pdf
 youtube: https://youtu.be/bXpoB09yX1U
 spotify: https://open.spotify.com/intl-de/track/1vNfnVBCNVHC7qQpQ6P4YF?si=4118eae1641844ca
 ---

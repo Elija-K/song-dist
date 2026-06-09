@@ -1,7 +1,6 @@
 ---
 title: Der HERR segne dich
 interpret: Johannes Hartl und Freunde
-akkorde: Johannes-Hartl-und-Freunde-Der-HERR-segne-dich.pdf
 youtube: https://www.youtube.com/watch?v=410bOWzW0O8
 spotify: https://open.spotify.com/track/5n3QRrkW0YsqGlMxP0tUO1?autoplay=true
 ---

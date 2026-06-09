@@ -1,7 +1,6 @@
 ---
 title: Reckless love
 interpret: Cory Asbury
-akkorde: reckless-love.pdf
 youtube: https://music.youtube.com/watch?v=42Z3rGYnsp4
 spotify: https://open.spotify.com/track/0rH0mprtecH3grD9HFM5AD?si=nZtuvIlHRQSGafAF3bEClg
 ---

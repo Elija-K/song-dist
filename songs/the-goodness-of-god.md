@@ -1,7 +1,6 @@
 ---
 title: The goodness of God
 interpret: Bethel Music, Jenn Johnson
-akkorde: the-goodness-of-god.pdf
 youtube: https://music.youtube.com/watch?v=n0FBb6hnwTo
 spotify: https://open.spotify.com/intl-de/track/1O6OPFAXdTdjHtT7Z2Hlt8
 ---

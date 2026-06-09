@@ -1,7 +1,6 @@
 ---
 title: Holy Forever
 interpret: Chris Tomlin
-akkorde: Chris-Tomlin-Holy-Forever.pdf
 youtube: https://www.youtube.com/watch?v=WKpycF4CfdM
 spotify: https://open.spotify.com/track/1bfRXeYRGJF8aCxUpQ4yOq
 ---

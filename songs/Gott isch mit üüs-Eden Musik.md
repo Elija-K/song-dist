@@ -1,7 +1,6 @@
 ---
 title: Gott isch mit üüs
 interpret: Eden Musik
-akkorde: Gott-isch-mit-üüs-Eden-Music.pdf
 youtube: https://music.youtube.com/watch?v=vJglPOEIhUE&si=SsQa8koR0ckj_2v3
 spotify: https://open.spotify.com/track/39TR3HOBA6e59OV4mnremO?si=191b64e996f2497c
 ---
