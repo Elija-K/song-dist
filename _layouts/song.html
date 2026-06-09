@@ -73,6 +73,7 @@
                 <path fill-rule="evenodd" d="M14 11V2h1v9zM6 3v10H5V3z"/>
                 <path d="M5 2.905a1 1 0 0 1 .9-.995l8-.8a1 1 0 0 1 1.1.995V3L5 4z"/>
               </svg>
+              Noten
             </button>
           </div>
           <button class="btn btn-secondary" onclick="add_favorite()">Add Favorite</button>
@@ -111,37 +112,49 @@ function del_favorite() {
   function show_chords() {
     var element = document.getElementById("chords");
     var text = document.getElementById("songtext");
+    var notes = document.getElementById("notes");
+    const urlPath = document.getElementById("UrlGrabber").innerHTML.trim();
+    let songName = urlPath.split('/').filter(part => part).pop();
+    songName = songName.replace(/\.html$/, '');
+    element.src = "/songs/chords/" + songName + ".pdf";
     if (element.style.display === "none") {
       element.style.display = "block";
       text.style.display = "none";
+      notes.style.display = "none";
     }
   }
 
   function show_notes() {
     var element = document.getElementById("notes");
     var text = document.getElementById("songtext");
+    var chords = document.getElementById("chords");
     const urlPath = document.getElementById("UrlGrabber").innerHTML.trim();
-    const songName = urlPath.split('/').filter(part => part).pop();
+    let songName = urlPath.split('/').filter(part => part).pop();
+    songName = songName.replace(/\.html$/, '');
     element.src = "/songs/noten/" + songName + ".pdf";
     if (element.style.display === "none") {
       element.style.display = "block";
       text.style.display = "none";
+      chords.style.display = "none";
     }
   }
 
   function show_text() {
-    var element = document.getElementById("chords");
-    var text = document.getElementById("songtext");
-    if (text.style.display === "none") {
-      text.style.display = "block";
-      element.style.display = "none";
+    var songtext = document.getElementById("songtext");
+    var chords = document.getElementById("chords");
+    var notes = document.getElementById("notes");
+    if (songtext.style.display === "none") {
+      songtext.style.display = "block";
+      chords.style.display = "none";
+      notes.style.display = "none";
     }
   }
 
   function checkPdfFiles() {
-    // Extrahiere den Song-Namen aus der URL
+    // Extrahiere den Song-Namen aus der URL und entferne .html
     const urlPath = document.getElementById("UrlGrabber").innerHTML.trim();
-    const songName = urlPath.split('/').filter(part => part).pop(); // Letzter Teil der URL
+    let songName = urlPath.split('/').filter(part => part).pop(); // Letzter Teil der URL
+    songName = songName.replace(/\.html$/, ''); // Entferne .html
     
     // Prüfe auf Noten-PDF
     const notesPdfPath = "/songs/noten/" + songName + ".pdf";
