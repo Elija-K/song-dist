@@ -16,6 +16,8 @@ TODO Liste:
 
 - [X] Fix für den PDF Viewer
 
-- [] Playlist's die man Teilen kann. <- **Aktives ToDo**
+- [] Playlist's die man Teilen kann.
 
-- [] BUGFIX - Wenn keine Lieder dann = 1 <- Darf nicht so sein
+- [] BUGFIX - Wenn keine Lieder dann = 1 <- Darf nicht so sein <- **Aktuelles TODO**
+
+- [] Text/Chords/Notes trennen und Chords wie Noten getrennt anzeigen

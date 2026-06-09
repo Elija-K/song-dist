@@ -69,14 +69,9 @@ title: Suchen
     console.log("results (i): " + results[i]);
     html += '<li><a href="' + post.url + '">' + post.title + ' - ' + post.interpret + '</a></li>';
   }
-  // Anzahl Songs
-  let resultsarray = "[" + results + "]";
-  console.log(resultsarray);
-  const bigarray = resultsarray.split(",");
-  let listarraylength = bigarray.length;
-  // SHOW IT
+  // Update the search results container with the generated HTML
   document.getElementById('search-results').innerHTML = html;
-  document.getElementById("search-title").innerHTML = "Songs " + "(" + listarraylength + ")";
+  document.getElementById("search-title").innerHTML = "Songs " + "(" + results.length + ")";
   }
   function random_song() {
   var songlist = "";
