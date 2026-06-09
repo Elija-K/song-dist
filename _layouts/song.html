@@ -58,14 +58,21 @@
               </svg>
               Text
             </button>
-            <button onclick="show_chords()" class="btn btn-secondary {% unless page.akkorde %}disabled{% endunless %}">
+            <button onclick="show_chords()" class="btn btn-secondary" id="chordsBtn" disabled>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
                 <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2"/>
                 <path fill-rule="evenodd" d="M12 3v10h-1V3z"/>
                 <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1z"/>
                 <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5"/>
               </svg>
-              Akkorde
+              Chords
+            </button>
+            <button onclick="show_notes()" class="btn btn-secondary" id="notesBtn" disabled>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-music-note-beamed" viewBox="0 0 16 16">
+                <path d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13s1.12-2 2.5-2 2.5.896 2.5 2m9-2c0 1.105-1.12 2-2.5 2s-2.5-.895-2.5-2 1.12-2 2.5-2 2.5.895 2.5 2"/>
+                <path fill-rule="evenodd" d="M14 11V2h1v9zM6 3v10H5V3z"/>
+                <path d="M5 2.905a1 1 0 0 1 .9-.995l8-.8a1 1 0 0 1 1.1.995V3L5 4z"/>
+              </svg>
             </button>
           </div>
           <button class="btn btn-secondary" onclick="add_favorite()">Add Favorite</button>
@@ -80,6 +87,7 @@
     </div>
   </div>
   <iframe src="https://songbuch.justsomeone.ch/songs/{{ page.akkorde }}" id="chords" style="display: none;height: 100vh;" class="mt-2 mt-md-4 ratio"></iframe>
+  <iframe src="/songs/chords/" id="notes" style="display: none;height: 100vh;" class="mt-2 mt-md-4 ratio"></iframe>
   <p id="UrlGrabber" hidden>{{ page.url }}</p>
   <p id="TitleGrabber" hidden>{{ page.title }}</p>
   <p id="InterpretGrabber" hidden>{{ page.interpret }}</p>
@@ -108,6 +116,19 @@ function del_favorite() {
       text.style.display = "none";
     }
   }
+
+  function show_notes() {
+    var element = document.getElementById("notes");
+    var text = document.getElementById("songtext");
+    const urlPath = document.getElementById("UrlGrabber").innerHTML.trim();
+    const songName = urlPath.split('/').filter(part => part).pop();
+    element.src = "/songs/noten/" + songName + ".pdf";
+    if (element.style.display === "none") {
+      element.style.display = "block";
+      text.style.display = "none";
+    }
+  }
+
   function show_text() {
     var element = document.getElementById("chords");
     var text = document.getElementById("songtext");
@@ -116,6 +137,42 @@ function del_favorite() {
       element.style.display = "none";
     }
   }
+
+  function checkPdfFiles() {
+    // Extrahiere den Song-Namen aus der URL
+    const urlPath = document.getElementById("UrlGrabber").innerHTML.trim();
+    const songName = urlPath.split('/').filter(part => part).pop(); // Letzter Teil der URL
+    
+    // Prüfe auf Noten-PDF
+    const notesPdfPath = "/songs/noten/" + songName + ".pdf";
+    fetch(notesPdfPath, { method: 'HEAD' })
+      .then(response => {
+        const notesBtn = document.getElementById("notesBtn");
+        if (response.ok) {
+          notesBtn.classList.remove('disabled');
+          notesBtn.disabled = false;
+        }
+      })
+      .catch(() => {
+        // PDF existiert nicht - Button bleibt disabled
+      });
+    
+    // Prüfe auf Chords-PDF
+    const chordsPdfPath = "/songs/chords/" + songName + ".pdf";
+    fetch(chordsPdfPath, { method: 'HEAD' })
+      .then(response => {
+        const chordsBtn = document.getElementById("chordsBtn");
+        if (response.ok) {
+          chordsBtn.classList.remove('disabled');
+          chordsBtn.disabled = false;
+        }
+      })
+      .catch(() => {
+        // PDF existiert nicht - Button bleibt disabled
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', checkPdfFiles);
 </script>
 </body>
 </html>
