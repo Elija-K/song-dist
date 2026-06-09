@@ -63,6 +63,12 @@ title: Suchen
 
 
   var results = search(query);
+  if (!Array.isArray(results) || results.length === 0) {
+    document.getElementById('search-results').innerHTML = '';
+    document.getElementById("search-title").innerHTML = "Songs (0)";
+    return;
+  }
+
   var html = '';
   for (var i = 0; i < results.length; i++) {
     var post = results[i];
