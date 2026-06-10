@@ -20,11 +20,12 @@ title: Suchen
     </div>
   </div>
   <div id="playlist-alway-show">
-    <a onclick="create_playlist()">Playlist erstellen</a> - <a onclick="import_playlist()">Playlist importieren</a>
+    <a style="cursor:pointer; color:#0d6efd; text-decoration:underline;" onclick="create_playlist()"><b>Playlist erstellen</b></a> - <a style="cursor:pointer; color:#0d6efd; text-decoration:underline;" onclick="import_playlist()"><b>Playlist importieren</b></a>
   </div>
-  <div id="playlists" disabled>
+  <div id="playlists">
     <h5 id="playlist-title">Deine Playlists</h5>
     <div id="playlist-results">
+    </div>
   </div>
   <h5 id="favorite-title">Deine Favoriten</h5>
   <div id="favorite-results">
@@ -115,7 +116,7 @@ title: Suchen
         playlistArray.forEach(function(playlist) {
           if (!playlist || !playlist.title) return;
           
-          playlistHTML += '<div class="mb-3"><h6>' + playlist.title + ' - <a onclick="deletePlaylist(\'' + cookieName + '\')">Löschen</a> - <a onclick="sharePlaylist(\'' + cookieName + '\')">Teilen</a></h6>';
+          playlistHTML += '<div class="mb-3"><h6><b>' + playlist.title + '</b> - <a style="cursor:pointer; color:#0d6efd; text-decoration:underline;" onclick="deletePlaylist(\'' + cookieName + '\')">Löschen</a> - <a style="cursor:pointer; color:#0d6efd; text-decoration:underline;" onclick="sharePlaylist(\'' + cookieName + '\')">Teilen</a></h6>';
           playlistHTML += '<ul class="list-unstyled ms-3">';
           
           if (Array.isArray(playlist.songs) && playlist.songs.length > 0) {
@@ -138,7 +139,7 @@ title: Suchen
   }
   function deletePlaylist(cookieName) {
     document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    list_playlist();
+    document.href = document.location.href; // Refresh the page to update the playlist list
   }
   function sharePlaylist(cookieName) {
     var cookies = document.cookie ? document.cookie.split(';').map(function(c){ return c.trim(); }) : [];

@@ -76,8 +76,10 @@
               Noten
             </button>
           </div>
-          <button class="btn btn-secondary" onclick="add_favorite()">Add Favorite</button>
-          <button class="btn btn-secondary" onclick="del_favorite()">Delete Favorite</button>
+          <div class="btn-group">
+            <button class="btn btn-secondary" onclick="add_favorite()">Add Favorite</button>
+            <button class="btn btn-secondary" onclick="del_favorite()">Delete Favorite</button>
+          </div>
         </div>
         <div id="player" style="display: none;text-align: center;"></div> <!-- YT Video/Music Player -->
         <div class="mt-2 mt-md-4" id="songtext">
@@ -185,6 +187,47 @@ function del_favorite() {
       });
   }
 
+  function add_to_playlist() {
+    var songtitle = document.getElementById("TitleGrabber").innerHTML;
+    var songinterpret = document.getElementById("InterpretGrabber").innerHTML;
+    var songurl = document.getElementById("UrlGrabber").innerHTML;
+    // Default playlist provided by the site (rendered server-side)
+    var defaultPlaylist = "{{ page.playlist | default: page.title | escape }}";
+    // Ask the user which playlist to add to (pre-filled with the default)
+    var playlistName = prompt("Add to playlist:", defaultPlaylist);
+    if (!playlistName) return; // user cancelled or entered empty name
+
+    // simple client-side slugify for cookie name
+    function slugify(s) {
+      return s.toString().toLowerCase()
+        .normalize('NFD').replace(/\p{Diacritic}/gu, '')
+        .replace(/[^a-z0-9 -]/g, '')
+        .trim().replace(/\s+/g, '-').replace(/-+/g, '-');
+    }
+
+    var cookieName = 'playlist-' + slugify(playlistName);
+
+    var jsonString = JSON.stringify({playlist: playlistName, title: songtitle, interpret: songinterpret, url: songurl});
+
+    // Set the cookie with the updated playlist
+    document.cookie = cookieName + "=" + encodeURIComponent(jsonString) + "; expires=Mon, 07 May 2029 12:00:00 UTC; path=/";
+  }
+  
+  function remove_from_playlist() {
+    var defaultPlaylist = "{{ page.playlist | default: page.title | escape }}";
+    var playlistName = prompt("Remove from playlist:", defaultPlaylist);
+    if (!playlistName) return;
+
+    function slugify(s) {
+      return s.toString().toLowerCase()
+        .normalize('NFD').replace(/\p{Diacritic}/gu, '')
+        .replace(/[^a-z0-9 -]/g, '')
+        .trim().replace(/\s+/g, '-').replace(/-+/g, '-');
+    }
+
+    var cookieName = "playlist-" + slugify(playlistName);
+    document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  }
   document.addEventListener('DOMContentLoaded', checkPdfFiles);
 </script>
 </body>
