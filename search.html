@@ -19,6 +19,13 @@ title: Suchen
     <button class="btn btn-secondary" onclick="reset_favorite()">Favoriten löschen</button>
     </div>
   </div>
+  <div id="playlist-alway-show">
+    <a onclick="create_playlist()">Playlist erstellen</a> - <a onclick="import_playlist()">Playlist importieren</a>
+  </div>
+  <div id="playlists" disabled>
+    <h5 id="playlist-title">Deine Playlists</h5>
+    <div id="playlist-results">
+  </div>
   <h5 id="favorite-title">Deine Favoriten</h5>
   <div id="favorite-results">
   </div>
@@ -45,7 +52,6 @@ title: Suchen
     var value = inputElement.value;
     search_list(value);
   }
-
   function search(query) {
     var results = [];
     for (var i = 0; i < searchIndex.length; i++) {
@@ -57,7 +63,6 @@ title: Suchen
     }
     return results;
   }
-
   function search_list(query) {
   // Use the attribute value as needed
 
@@ -89,6 +94,158 @@ title: Suchen
   thearray = songlist[Math.floor(Math.random() * lengtharray)];
   randomsong = "https://songbuch.justsomeone.ch/" + thearray.url;
   window.location.href = randomsong;
+  }
+  function list_playlist() {
+    var cookies = document.cookie ? document.cookie.split(';').map(function(c){ return c.trim(); }) : [];
+    var playlists = cookies.filter(function(c){ return c.indexOf('=') > -1 && c.split('=')[0].match(/^pl\d+-/); });
+
+    if (playlists.length === 0) {
+      document.getElementById("playlists").disabled = true;
+      return;
+    }
+    var playlistHTML = '';
+    playlists.forEach(function(cookie) {
+      try {
+        var cookieName = cookie.split('=')[0];
+        var value = cookie.substring(cookie.indexOf('=') + 1);
+        if (!value) return;
+        var playlistArray = JSON.parse(decodeURIComponent(value));
+        if (!Array.isArray(playlistArray)) playlistArray = [playlistArray];
+        
+        playlistArray.forEach(function(playlist) {
+          if (!playlist || !playlist.title) return;
+          
+          playlistHTML += '<div class="mb-3"><h6>' + playlist.title + ' - <a onclick="deletePlaylist(\'' + cookieName + '\')">Löschen</a> - <a onclick="sharePlaylist(\'' + cookieName + '\')">Teilen</a></h6>';
+          playlistHTML += '<ul class="list-unstyled ms-3">';
+          
+          if (Array.isArray(playlist.songs) && playlist.songs.length > 0) {
+            playlist.songs.forEach(function(song) {
+              playlistHTML += '<li><a href="' + (song.url || '#') + '">' + (song.title || 'Untitled') + ' - ' + (song.artist || '') + '</a></li>';
+            });
+          } else {
+            playlistHTML += '<li class="text-muted">Keine Songs</li>';
+          }
+          
+          playlistHTML += '</ul></div>';
+        });
+      } catch (e) {
+        console.error('Failed to parse playlist cookie:', cookie, e);
+      }
+    });
+
+    var container = document.getElementById('playlist-results');
+    if (container) container.innerHTML = playlistHTML;
+  }
+  function deletePlaylist(cookieName) {
+    document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    list_playlist();
+  }
+  function sharePlaylist(cookieName) {
+    var cookies = document.cookie ? document.cookie.split(';').map(function(c){ return c.trim(); }) : [];
+    var playlistCookie = cookies.find(function(c){ return c.indexOf('=') > -1 && c.split('=')[0] === cookieName; });
+    if (!playlistCookie) {
+      alert('Playlist nicht gefunden?');
+      return;
+    }
+    var value = playlistCookie.substring(playlistCookie.indexOf('=') + 1);
+    if (!value) {
+      alert('Playlist hat keinen Inhalt!?');
+      return;
+    }
+    
+    var playlistData = decodeURIComponent(value);
+    var playlistName = cookieName.replace(/^pl\d+-/, '');
+    var fileName = playlistName + '.js-pl';
+    
+    // Create blob and download
+    var blob = new Blob([playlistData], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement('a');
+    link.href = url;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    
+    alert('Playlist als ' + fileName + ' heruntergeladen.');
+  }
+  function savePlaylistCookie(playlistName, playlistData) {
+    var cookies = document.cookie ? document.cookie.split(';').map(function(c){ return c.trim(); }) : [];
+    var existingPlaylists = cookies.filter(function(c){ return c.indexOf('=') > -1 && c.split('=')[0].match(/^pl\d+-/); });
+
+    var nameExists = existingPlaylists.some(function(c) {
+      return c.split('=')[0].replace(/^pl\d+-/, '') === playlistName;
+    });
+    if (nameExists) {
+      alert("Es existiert bereits eine Playlist mit diesem Namen!");
+      return false;
+    }
+
+    var num = existingPlaylists.reduce(function(maxNum, cookie) {
+      var match = cookie.split('=')[0].match(/^pl(\d+)-/);
+      var currentNum = match ? parseInt(match[1], 10) : 0;
+      return currentNum > maxNum ? currentNum : maxNum;
+    }, 0) + 1;
+
+    var cookieName = 'pl' + num + '-' + playlistName;
+    var payload = playlistData || {
+      title: playlistName,
+      'created-at': new Date().toISOString(),
+      'created-by': 'Benutzer',
+      songs: []
+    };
+
+    if (!payload.title) payload.title = playlistName;
+    if (!payload['created-at']) payload['created-at'] = new Date().toISOString();
+    if (!payload['created-by']) payload['created-by'] = 'Benutzer';
+    if (!Array.isArray(payload.songs)) payload.songs = [];
+
+    document.cookie = cookieName + '=' + encodeURIComponent(JSON.stringify(payload)) + '; path=/;';
+    return true;
+  }
+  function create_playlist() {
+    var playlistName = prompt("Gib deiner Playlist DEN Namen:");
+    if (!playlistName) {
+      alert("Playlist-Name darf nicht leer sein!");
+      return;
+    }
+    savePlaylistCookie(playlistName);
+    list_playlist();
+  }
+  function import_playlist() {
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.js-pl,application/json';
+    
+    input.onchange = function(event) {
+      var file = event.target.files[0];
+      if (!file) return;
+      
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          var content = e.target.result;
+          var playlistData = JSON.parse(content);
+          if (!playlistData || !playlistData.title) {
+            alert('Ungültiges Playlist-Format!');
+            return;
+          }
+          
+          var playlistName = playlistData.title;
+          if (savePlaylistCookie(playlistName, playlistData)) {
+            list_playlist();
+          }
+        } catch (err) {
+          console.error('Fehler beim Importieren der Playlist:', err);
+          alert('Fehler beim Importieren der Playlist. Stelle sicher, dass die Datei im richtigen Format ist.');
+        }
+      };
+      
+      reader.readAsText(file);
+    };
+    
+    input.click();
   }
   function list_favorite() {
     // Read all cookies whose name starts with 'fav-' and parse each value as a single favorite song
@@ -148,4 +305,5 @@ title: Suchen
 
   search_list("");
   list_favorite();
+  list_playlist();
 </script>
