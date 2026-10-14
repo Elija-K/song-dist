@@ -139,7 +139,7 @@ title: Suchen
   }
   function deletePlaylist(cookieName) {
     document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    document.href = document.location.href; // Refresh the page to update the playlist list
+    list_playlist(); // Update the playlist list immediately after deletion
   }
   function sharePlaylist(cookieName) {
     var cookies = document.cookie ? document.cookie.split(';').map(function(c){ return c.trim(); }) : [];
