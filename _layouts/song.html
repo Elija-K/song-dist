@@ -85,6 +85,25 @@
             <button class="btn btn-secondary" onclick="remove_from_playlist()">Remove from Playlist</button>
           </div>
         </div>
+        <div class="modal fade" id="playlistPickerModal" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Playlist auswählen</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schliessen"></button>
+              </div>
+              <div class="modal-body">
+                <label for="playlistPickerSelect" class="form-label">Bestehende Playlist</label>
+                <select id="playlistPickerSelect" class="form-select"></select>
+                <div id="playlistPickerEmpty" class="text-muted mt-2 d-none">Es wurden keine bestehenden Playlists gefunden.</div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+                <button type="button" class="btn btn-primary" onclick="confirm_playlist_add()">Hinzufügen</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div id="player" style="display: none;text-align: center;"></div> <!-- YT Video/Music Player -->
         <div class="mt-2 mt-md-4" id="songtext">
           <h1>{{ page.title }}</h1>
@@ -195,42 +214,139 @@ function del_favorite() {
     var songtitle = document.getElementById("TitleGrabber").innerHTML;
     var songinterpret = document.getElementById("InterpretGrabber").innerHTML;
     var songurl = document.getElementById("UrlGrabber").innerHTML;
-    // Default playlist provided by the site (rendered server-side)
-    var defaultPlaylist = "{{ page.playlist | default: page.title | escape }}";
-    // Ask the user which playlist to add to (pre-filled with the default)
-    var playlistName = prompt("Add to playlist:", defaultPlaylist);
-    if (!playlistName) return; // user cancelled or entered empty name
-
-    // simple client-side slugify for cookie name
-    function slugify(s) {
-      return s.toString().toLowerCase()
-        .normalize('NFD').replace(/\p{Diacritic}/gu, '')
-        .replace(/[^a-z0-9 -]/g, '')
-        .trim().replace(/\s+/g, '-').replace(/-+/g, '-');
+    var playlists = get_existing_playlists();
+    if (playlists.length === 0) {
+      alert("Es gibt noch keine bestehende Playlist. Erstelle zuerst eine Playlist in der Suche.");
+      return;
     }
 
-    var cookieName = 'playlist-' + slugify(playlistName);
+    var select = document.getElementById("playlistPickerSelect");
+    var emptyState = document.getElementById("playlistPickerEmpty");
+    select.innerHTML = "";
 
-    var jsonString = JSON.stringify({playlist: playlistName, title: songtitle, interpret: songinterpret, url: songurl});
+    playlists.forEach(function(playlist) {
+      var option = document.createElement("option");
+      option.value = playlist.cookieName;
+      option.textContent = playlist.title;
+      select.appendChild(option);
+    });
 
-    // Set the cookie with the updated playlist
-    document.cookie = cookieName + "=" + encodeURIComponent(jsonString) + "; expires=Mon, 07 May 2029 12:00:00 UTC; path=/";
+    if (emptyState) emptyState.classList.add("d-none");
+
+    var modalElement = document.getElementById("playlistPickerModal");
+    modalElement.dataset.songTitle = songtitle;
+    modalElement.dataset.songInterpret = songinterpret;
+    modalElement.dataset.songUrl = songurl;
+
+    bootstrap.Modal.getOrCreateInstance(modalElement).show();
+  }
+
+  function get_existing_playlists() {
+    var cookies = document.cookie ? document.cookie.split(';').map(function(c){ return c.trim(); }) : [];
+    var playlists = [];
+
+    cookies.forEach(function(cookie) {
+      if (cookie.indexOf('=') === -1) return;
+
+      var cookieName = cookie.split('=')[0];
+      if (!cookieName.match(/^pl\d+-/)) return;
+
+      var value = cookie.substring(cookie.indexOf('=') + 1);
+      if (!value) return;
+
+      try {
+        var playlistData = JSON.parse(decodeURIComponent(value));
+        playlists.push({
+          cookieName: cookieName,
+          title: playlistData && playlistData.title ? playlistData.title : cookieName.replace(/^pl\d+-/, ''),
+          data: playlistData || {}
+        });
+      } catch (error) {
+        console.error('Failed to parse playlist cookie:', cookie, error);
+      }
+    });
+
+    playlists.sort(function(a, b) {
+      return a.title.localeCompare(b.title, 'de');
+    });
+
+    return playlists;
+  }
+
+  function confirm_playlist_add() {
+    var modalElement = document.getElementById("playlistPickerModal");
+    var select = document.getElementById("playlistPickerSelect");
+    var selectedCookieName = select ? select.value : "";
+    if (!selectedCookieName) return;
+
+    var songtitle = modalElement.dataset.songTitle || document.getElementById("TitleGrabber").innerHTML;
+    var songinterpret = modalElement.dataset.songInterpret || document.getElementById("InterpretGrabber").innerHTML;
+    var songurl = modalElement.dataset.songUrl || document.getElementById("UrlGrabber").innerHTML;
+
+    var cookies = document.cookie ? document.cookie.split(';').map(function(c){ return c.trim(); }) : [];
+    var playlistCookie = cookies.find(function(c){ return c.indexOf('=') > -1 && c.split('=')[0] === selectedCookieName; });
+    if (!playlistCookie) {
+      alert('Playlist nicht gefunden.');
+      return;
+    }
+
+    var value = playlistCookie.substring(playlistCookie.indexOf('=') + 1);
+    var playlistData;
+    try {
+      playlistData = value ? JSON.parse(decodeURIComponent(value)) : {};
+    } catch (error) {
+      alert('Die ausgewählte Playlist konnte nicht gelesen werden.');
+      return;
+    }
+
+    if (!playlistData || typeof playlistData !== 'object') playlistData = {};
+    if (!Array.isArray(playlistData.songs)) playlistData.songs = [];
+
+    var alreadyExists = playlistData.songs.some(function(song) {
+      return song && song.url === songurl;
+    });
+
+    if (!alreadyExists) {
+      playlistData.songs.push({
+        title: songtitle,
+        artist: songinterpret,
+        interpret: songinterpret,
+        url: songurl
+      });
+    }
+
+    if (!playlistData.title) {
+      playlistData.title = selectedCookieName.replace(/^pl\d+-/, '');
+    }
+
+    document.cookie = selectedCookieName + "=" + encodeURIComponent(JSON.stringify(playlistData)) + "; path=/;";
+    bootstrap.Modal.getInstance(modalElement).hide();
   }
   
   function remove_from_playlist() {
-    var defaultPlaylist = "{{ page.playlist | default: page.title | escape }}";
-    var playlistName = prompt("Remove from playlist:", defaultPlaylist);
-    if (!playlistName) return;
-
-    function slugify(s) {
-      return s.toString().toLowerCase()
-        .normalize('NFD').replace(/\p{Diacritic}/gu, '')
-        .replace(/[^a-z0-9 -]/g, '')
-        .trim().replace(/\s+/g, '-').replace(/-+/g, '-');
+    var playlists = get_existing_playlists();
+    if (playlists.length === 0) {
+      alert("Es gibt keine bestehende Playlist zum Entfernen.");
+      return;
     }
 
-    var cookieName = "playlist-" + slugify(playlistName);
-    document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    var playlistName = prompt(
+      "Von welcher bestehenden Playlist soll dieser Song entfernt werden?\n" +
+      playlists.map(function(playlist, index) { return (index + 1) + ": " + playlist.title; }).join("\n")
+    );
+
+    if (!playlistName) return;
+
+    var match = playlists.find(function(playlist) {
+      return playlist.title === playlistName || playlist.cookieName === playlistName;
+    });
+
+    if (!match) {
+      alert("Playlist nicht gefunden.");
+      return;
+    }
+
+    document.cookie = match.cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   }
   document.addEventListener('DOMContentLoaded', checkPdfFiles);
 </script>
