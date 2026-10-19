@@ -1,27 +1,112 @@
-.form-check-input {
-  margin-right: 4px;
-}
-
-pre.highlight {
-  padding: 10px;
-}
-
-.task-list {
-  list-style-type: none;
-}
-
-.btn-secondary {
-  --bs-btn-bg: #a35555;
-}
-
-html {
-  background-color: #fccaca;
-}
-
 body {
-  background-color: #fccaca;
+    margin: 0;
+    text-align: center;
+    background-color: #e6f2ff;
+    color: #000033;
 }
 
-nav {
-  background-color: #fccaca;
+/* NAVBAR */
+#navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #d5e1ee;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 51, 0.2);
+    box-sizing: border-box;
+    list-style: none;
+}
+
+#navbar ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar a {
+    display: block;
+    padding: 1rem;
+    color: #000033;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 0.4rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#navbar a:hover,
+#navbar a:focus {
+    color: #1f5f99;
+    text-decoration: underline;
+}
+
+#navbar a:hover {
+    background-color: #e6f2ff;
+}
+
+
+/* FOOTER */
+#footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    background-color: #d5e1ee;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 -4px 12px rgba(0, 0, 51, 0.2);
+    box-sizing: border-box;
+    list-style: none;
+}
+
+#footer ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#footer a {
+    display: block;
+    padding: 1rem;
+    color: #000033;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 0.4rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#footer a:hover,
+#footer a:focus {
+    color: #1f5f99;
+    text-decoration: underline;
+}
+
+#footer a:hover {
+    background-color: #e6f2ff;
 }

@@ -1,0 +1,17 @@
+#center-song {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+.comment {
+    color: #666666;
+    font-style: italic;
+    font-size: 20px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+.chord {
+    color: #000033;
+    font-weight: bold;
+    font-size: 16px;
+}
