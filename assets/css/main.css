@@ -23,6 +23,7 @@ body {
     list-style: none;
 }
 
+
 #navbar ul {
     display: flex;
     align-items: center;
@@ -109,4 +110,24 @@ body {
 
 #footer a:hover {
     background-color: #e6f2ff;
+}
+
+button {
+    background-color: #d5e1ee;
+    color: #000033;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 3px;
+    border-color: #c4d0dd;
+    cursor: pointer;
+}
+
+button.disabled {
+    background-color: #d5e1ee;
+    color: #747480;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 3px;
+    border-color: #c4d0dd;
+    cursor: not-allowed;
 }

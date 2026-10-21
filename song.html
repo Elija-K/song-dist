@@ -8,7 +8,39 @@
     <title>Songtitel</title>
 </head>
 <body>
+    <div id="player"></div>
     <div id="navbar"></div>
+    <div id="song-settings">
+        <div id="shortlinks" class="div-song-settings">
+            <button class="shortlinks song-settings" id="youtube">Youtube</button>
+            <button class="shortlinks song-settings" id="spotify">Spotify</button>
+        </div>
+        <div id="music" class="div-song-settings">
+            <button class="music song-settings" id="play-song" onclick="PlaySong()">Play Song</button>
+            <button class="music song-settings" id="play-metronom">Play Metronom</button>
+        </div>
+        <div id="song-specific" class="div-song-settings">
+            <button class="song-specific song-settings" id="switch-chords" onclick="switchChords()">Hide Chords</button>
+            <button class="song-specific song-settings" id="pdf-export" onclick="PDFexport()">PDF Export</button>
+        </div>
+        <div id="transpose" class="div-song-settings">
+            <button class="transpose song-settings" id="lower" onclick="transpose('l')">-</button>
+            <b class="transpose song-settings" id="transpose-num">0</b>
+            <button class="transpose song-settings" id="higher" onclick="transpose('h')">+</button>
+        </div>
+        <div id="favorite" class="div-song-settings">
+            <button class="favorite song-settings" id="add-favorite" onclick="addFavorites()">Add Favorite</button>
+            <button class="favorite song-settings" id="remove-favorite" onclick="removeFavorites()">Remove Favorite</button>
+        </div>
+        <div id="playlist" class="div-song-settings">
+            <button class="playlist song-settings" id="add-playlist" onclick="addPlaylist()">Add to Playlist</button>
+            <button class="playlist song-settings" id="remove-playlist" onclick="removePlaylist()">Remove from Playlist</button>
+            <select class="playlist song-settings" id="select-playlist" name="Playlist">
+                <option value="none">Keine Playlists vorhanden</option>
+            </select>
+        </div>
+
+    </div>
     <div id="center-song">
         <div id="song"></div>
     </div>
@@ -16,4 +48,9 @@
 </html>
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/song.js"></script>
+<script src="/assets/js/playlist.js"></script>
+<script src="/assets/js/favorites.js"></script>
+<script src="/assets/js/music.js"></script>
 <script src="/assets/js/chordpro.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
