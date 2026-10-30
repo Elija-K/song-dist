@@ -136,3 +136,12 @@ button.disabled {
     border-color: #c4d0dd;
     cursor: not-allowed;
 }
+
+#search {
+    margin-left: auto;
+    width: 2.5rem;
+    height: 2.5rem;
+    aspect-ratio: 1;
+    box-sizing: border-box;
+}
+

@@ -1,4 +1,3 @@
-
 "use strict";
 
 // Global variables
@@ -16,7 +15,7 @@ function loadChordPro() {
 
     return new Promise((resolve, reject) => {
         const script = document.createElement("script");
-        script.src = "/assets/js/chordpro.bundle.js";
+        script.src = new URL("assets/js/chordpro.bundle.js", document.baseURI).href;
         script.onload = resolve;
         script.onerror = reject;
         document.head.appendChild(script);
@@ -27,7 +26,7 @@ function loadChordPro() {
 function loadPlaylistAsset() {
     return new Promise((resolve, reject) => {
         const script = document.createElement("script");
-        script.src = "/assets/js/playlist.js";
+        script.src = new URL("assets/js/playlist.js", document.baseURI).href;
         script.onload = resolve;
         script.onerror = reject;
         document.head.appendChild(script);
@@ -39,10 +38,17 @@ async function loadSong() {
     const songElement = document.getElementById("song");
 
     try {
+        if (window.location.protocol === "file:") {
+            throw new Error(
+                "song.html muss über einen Webserver geöffnet werden, nicht über file://."
+            );
+        }
+
         await loadChordPro();
 
         const params = new URLSearchParams(window.location.search);
-        const lied = params.get("lied");
+        // Support both parameter names used by the song links.
+        const lied = params.get("lied") || params.get("song");
 
         if (!lied) {
             songElement.innerText = "Kein Lied angegeben.";
@@ -50,7 +56,7 @@ async function loadSong() {
         }
 
         const response = await fetch(
-            `/songs/${encodeURIComponent(lied)}.cho`
+            new URL(`songs/${encodeURIComponent(lied)}.cho`, document.baseURI)
         );
 
         if (!response.ok) {
@@ -65,7 +71,10 @@ async function loadSong() {
 
         renderSong();
         setShortlinks();
-        loadMusic();
+        // Music playback is optional and may not be present on every page.
+        if (typeof loadMusic === "function") {
+            loadMusic();
+        }
 
         const title = songElement.querySelector(".title");
         if (title) {

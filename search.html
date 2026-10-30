@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JustSongs</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/search.css">
+</head>
+<body>
+    <div id="navbar"></div>
+    <h1>Die grosse Suche</h1>
+    <div id="suche">
+        <p id="search-p">Suche hier: <input type="search" name="q" placeholder="Super Lied" onchange="newsearch()"></p>
+        <div id="favoriten">
+            <h2 id="favorites-counter">Deine Favoriten - 0</h2>
+            <div id="favoriten-list">
+                <p>Keine Favoriten</p>
+            </div>
+        </div>
+        <div id="playlists">
+            <h2 id="playlist-counter">Deine Playlists - 0</h2>
+            <div id="playlist-list">
+                <p>Keine Playlists gefunden</p>
+            </div>
+        </div>
+        <div id="search-result">
+            <h2 id="search-counter">Deine Suche - 0</h2>
+            <div id="search-list">
+                <p>Ein Problem ist aufgetreten?</p>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+</body>
+</html>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/playlist.js"></script>
+<script src="/assets/js/favorites.js"></script>
+<script src="/assets/js/search.js"></script>

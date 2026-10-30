@@ -1,0 +1,21 @@
+body {
+    padding-left: 30%;
+    text-align: left;
+}
+#search-p {
+    padding-left: 20%;
+    text-align: left;
+}
+h1 {
+    padding-left: 20%;
+    text-align: left;
+}
+
+.song-li {
+    margin: 10px;
+    width: 100%;
+}
+
+.song-tag {
+    font-size: 20px;
+}
