@@ -237,8 +237,107 @@ function list_favorites() {
     }
 }
 
+function deleteAllFavorites() {
+    if (!readArray('fav').length) return;
+
+    if (!window.confirm('Alle Favoriten wirklich löschen?')) return;
+
+    localStorage.removeItem('fav');
+    list_favorites();
+}
+
 
 // ================= PLAYLISTS =================
+
+function downloadPlaylist(key, name) {
+    const data = localStorage.getItem(key);
+    if (data === null) return;
+
+    const blob = new Blob([data], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+
+    link.href = url;
+    link.download = `${name || 'playlist'}.jspl`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+}
+
+function importPlaylist(file) {
+    const reader = new FileReader();
+
+    reader.addEventListener('load', () => {
+        let data;
+
+        try {
+            data = JSON.parse(reader.result);
+        } catch (error) {
+            window.alert('Die Playlist-Datei ist keine gültige JSON-Datei.');
+            return;
+        }
+
+        const filename = file.name.replace(/\.jspl$/i, '').trim();
+        const name = window.prompt('Name der importierten Playlist:', filename);
+
+        if (!name || !name.trim()) return;
+
+        const key = `jspl_${name.trim()}`;
+
+        if (localStorage.getItem(key) !== null &&
+            !window.confirm(`Playlist „${name.trim()}“ überschreiben?`)) {
+            return;
+        }
+
+        localStorage.setItem(key, JSON.stringify(data));
+        list_playlist();
+    });
+
+    reader.addEventListener('error', () => {
+        window.alert('Die Playlist-Datei konnte nicht gelesen werden.');
+    });
+
+    reader.readAsText(file);
+}
+
+function setupManagementButtons() {
+    const favoritesList = document.getElementById('favoriten-list');
+
+    if (favoritesList && !document.querySelector('[data-delete-all-favorites]')) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = 'Favoriten löschen';
+        button.className = 'playlist-action';
+        button.dataset.deleteAllFavorites = 'true';
+        button.addEventListener('click', deleteAllFavorites);
+        favoritesList.parentElement?.insertBefore(button, favoritesList);
+    }
+
+    const createButton = [...document.querySelectorAll('button, a')]
+        .find(element => element.textContent.trim() === 'Playlist erstellen');
+
+    if (createButton && !document.querySelector('[data-import-playlist]')) {
+        const importButton = document.createElement('button');
+        importButton.type = 'button';
+        importButton.textContent = 'Playlist importieren';
+        importButton.className = createButton.className;
+        importButton.dataset.importPlaylist = 'true';
+
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.jspl,application/json';
+        input.hidden = true;
+        input.addEventListener('change', () => {
+            if (input.files[0]) importPlaylist(input.files[0]);
+            input.value = '';
+        });
+
+        importButton.addEventListener('click', () => input.click());
+        createButton.parentElement?.insertBefore(importButton, createButton.nextSibling);
+        createButton.parentElement?.appendChild(input);
+    }
+}
 
 
 function list_playlist() {
@@ -283,7 +382,48 @@ function list_playlist() {
 
         const heading = document.createElement('h3');
         heading.textContent = `${name} (${songs.length})`;
-        section.appendChild(heading);
+
+        const actions = document.createElement('div');
+        actions.className = 'playlist-actions';
+        actions.style.display = 'inline-flex';
+        actions.style.gap = '0.75em';
+        actions.style.marginLeft = '1em';
+
+        const downloadButton = document.createElement('button');
+        downloadButton.type = 'button';
+        downloadButton.textContent = 'Playlist herunterladen';
+        downloadButton.className = 'playlist-action';
+        downloadButton.style.background = 'none';
+        downloadButton.style.border = 'none';
+        downloadButton.style.cursor = 'pointer';
+        downloadButton.style.padding = '0';
+        downloadButton.addEventListener('click', () => {
+            downloadPlaylist(key, name);
+        });
+        actions.appendChild(downloadButton);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.textContent = 'Playlist löschen';
+        deleteButton.className = 'playlist-action';
+        deleteButton.style.background = 'none';
+        deleteButton.style.border = 'none';
+        deleteButton.style.cursor = 'pointer';
+        deleteButton.style.padding = '0';
+        deleteButton.addEventListener('click', () => {
+            if (!window.confirm(`Playlist „${name}“ wirklich löschen?`)) return;
+
+            localStorage.removeItem(key);
+            list_playlist();
+        });
+        actions.appendChild(deleteButton);
+
+        const header = document.createElement('div');
+        header.className = 'playlist-header';
+        header.style.display = 'flex';
+        header.style.alignItems = 'baseline';
+        header.append(heading, actions);
+        section.appendChild(header);
 
         const ul = document.createElement('ul');
         const seen = new Set();
@@ -337,6 +477,7 @@ function initializeSongLists() {
     list_song();
     list_favorites();
     list_playlist();
+    setupManagementButtons();
 }
 
 if (document.readyState === 'loading') {

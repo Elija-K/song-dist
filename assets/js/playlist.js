@@ -68,3 +68,10 @@ function listPlaylist() {
 
     return(playlists)
     }
+
+function createPlaylistWithName() {
+    const name = prompt("Wie soll die Playlist heissen?");
+    createPlaylist(name);
+    location.reload();
+    
+}
