@@ -1,15 +1,50 @@
+:root {
+    color-scheme: light;
+    --background-color: #e6f2ff;
+    --text-color: #000033;
+    --surface-color: #d5e1ee;
+    --border-color: #c4d0dd;
+    --hover-color: #1f5f99;
+    --hover-background: #e6f2ff;
+    --disabled-color: #747480;
+    --shadow-color: rgba(0, 0, 51, 0.2);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root.dark-mode, body.dark-mode {
+    --background-color: #121b2b;
+    --text-color: #e6f2ff;
+    --surface-color: #1d2b40;
+    --border-color: #40536b;
+    --hover-color: #90c5ff;
+    --hover-background: #30435c;
+    --disabled-color: #747480;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+
+    color-scheme: dark;
+}
+
 body {
     margin: 0;
     padding-top: 4rem;
     padding-bottom: 5rem;
     text-align: center;
-    background-color: #e6f2ff;
-    color: #000033;
+    background-color: var(--background-color);
+    color: var(--text-color);
     min-height: 100vh;
     box-sizing: border-box;
 }
 
-/* NAVBAR */
+:root.dark-mode,
+body.dark-mode {
+    color-scheme: dark;
+}
+
 #navbar {
     position: fixed;
     top: 0;
@@ -24,22 +59,20 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: #d5e1ee;
+    background-color: var(--surface-color);
     border: none;
     border-radius: 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 51, 0.2);
+    box-shadow: 0 4px 12px var(--shadow-color);
     box-sizing: border-box;
     list-style: none;
     padding-left: 1.5rem;
 }
-
 
 #navbar ul {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 30px;
-
     list-style: none;
     margin: 0;
     padding: 0;
@@ -48,7 +81,7 @@ body {
 #navbar a {
     display: block;
     padding: 1rem;
-    color: #000033;
+    color: var(--text-color);
     text-decoration: none;
     font-weight: 600;
     border-radius: 0.4rem;
@@ -57,15 +90,14 @@ body {
 
 #navbar a:hover,
 #navbar a:focus {
-    color: #1f5f99;
+    color: var(--hover-color);
     text-decoration: underline;
 }
 
 #navbar a:hover {
-    background-color: #e6f2ff;
+    background-color: var(--hover-background);
 }
 
-/* FOOTER */
 #footer {
     position: fixed;
     bottom: 0;
@@ -78,10 +110,10 @@ body {
     flex-direction: row;
     margin: 0;
     padding: 0.5rem 1rem;
-    background-color: #d5e1ee;
+    background-color: var(--surface-color);
     border: none;
     border-radius: 0;
-    box-shadow: 0 -4px 12px rgba(0, 0, 51, 0.2);
+    box-shadow: 0 -4px 12px var(--shadow-color);
     box-sizing: border-box;
     list-style: none;
 }
@@ -91,7 +123,6 @@ body {
     align-items: center;
     justify-content: center;
     gap: 30px;
-
     list-style: none;
     margin: 0;
     padding: 0;
@@ -100,7 +131,7 @@ body {
 #footer a {
     display: block;
     padding: 1rem;
-    color: #000033;
+    color: var(--text-color);
     text-decoration: none;
     font-weight: 600;
     border-radius: 0.4rem;
@@ -109,39 +140,47 @@ body {
 
 #footer a:hover,
 #footer a:focus {
-    color: #1f5f99;
+    color: var(--hover-color);
     text-decoration: underline;
 }
 
 #footer a:hover {
-    background-color: #e6f2ff;
+    background-color: var(--hover-background);
 }
 
 button {
-    background-color: #d5e1ee;
-    color: #000033;
+    background-color: var(--surface-color);
+    color: var(--text-color);
     border-radius: 5px;
     padding: 5px;
     margin: 3px;
-    border-color: #c4d0dd;
+    border-color: var(--border-color);
     cursor: pointer;
 }
 
-button.disabled {
-    background-color: #d5e1ee;
-    color: #747480;
+button.disabled,
+button:disabled {
+    background-color: var(--surface-color);
+    color: var(--disabled-color);
     border-radius: 5px;
     padding: 5px;
     margin: 3px;
-    border-color: #c4d0dd;
+    border-color: var(--border-color);
     cursor: not-allowed;
 }
 
 #search {
-    margin-left: auto;
+    margin-left: 0;
     width: 2.5rem;
     height: 2.5rem;
     aspect-ratio: 1;
     box-sizing: border-box;
 }
 
+#change-bright {
+    margin-left: auto;
+    width: 3.5rem;
+    height: 2.5rem;
+    aspect-ratio: 1;
+    box-sizing: border-box;
+}

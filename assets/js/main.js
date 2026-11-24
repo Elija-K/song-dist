@@ -13,15 +13,35 @@ async function set_extras() {
         footer_response.text()
     ]);
 
-    // Do not replace document.body.innerHTML: that would remove page state,
-    // form values, and event listeners, including settings controls.
     document.body.insertAdjacentHTML('afterbegin', navbar);
     document.body.insertAdjacentHTML('beforeend', footer);
 
-    // Settings and other page scripts can initialize after the navbar exists.
     document.dispatchEvent(new CustomEvent('extrasloaded'));
 }
 
-set_extras().catch((error) => {
-    console.error('Unable to load navbar and footer:', error);
+function change_dark_light_mode() {
+    var color_mode = localStorage.getItem('color-mode');
+
+    if (color_mode === 'dark') {
+        localStorage.setItem('color-mode', 'light');
+    } else {
+        localStorage.setItem('color-mode', 'dark');
+    }
+}
+
+function set_dark_light_mode() {
+    var color_mode = localStorage.getItem('color-mode');
+
+    document.body.classList.toggle(
+        'dark-mode', color_mode === 'dark'
+    );
+    change_dark_light_mode();
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    set_dark_light_mode();
+
+    set_extras().catch((error) => {
+        console.error('Unable to load navbar and footer:', error);
+    });
 });
