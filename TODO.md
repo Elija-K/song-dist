@@ -1,4 +1,4 @@
-- [ ] Dark Mode
-- [ ] Startseite leer
+- [X] Dark Mode
+- [X] Startseite leer
 - [X] Titel noch Klickbar machen in der Navbar
 - [X] Navbar und Footer überarbeiten

@@ -184,3 +184,8 @@ button:disabled {
     aspect-ratio: 1;
     box-sizing: border-box;
 }
+
+p {
+    margin-left: 35%;
+    margin-right: 35%;
+}
