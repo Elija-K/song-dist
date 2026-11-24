@@ -27,6 +27,7 @@ function change_dark_light_mode() {
     } else {
         localStorage.setItem('color-mode', 'dark');
     }
+    set_dark_light_mode();
 }
 
 function set_dark_light_mode() {
@@ -35,7 +36,6 @@ function set_dark_light_mode() {
     document.body.classList.toggle(
         'dark-mode', color_mode === 'dark'
     );
-    change_dark_light_mode();
 }
 
 document.addEventListener('DOMContentLoaded', function () {

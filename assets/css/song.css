@@ -3,18 +3,21 @@
     justify-content: center;
     margin: 30px 0;
 }
+
 .comment {
-    color: #666666;
+    color: var(--comment-color);
     font-style: italic;
     font-size: 20px;
     padding-top: 30px;
     padding-bottom: 10px;
 }
+
 .chord {
-    color: #000033;
+    color: var(--text-color);
     font-weight: bold;
     font-size: 16px;
 }
+
 #song-settings {
     display: flex;
     flex-direction: row;
@@ -26,7 +29,7 @@
 .div-song-settings {
     margin: 5px;
     padding: 10px;
-    background-color: #d5e1ee;
+    background-color: var(--surface-color);
     border-radius: 10px;
 }
 
